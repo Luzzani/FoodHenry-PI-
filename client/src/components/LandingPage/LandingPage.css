@@ -1,0 +1,13 @@
+.landing__container {
+    background:fixed url('../../assets/image/frying-pan-empty-with-various-spices-in-black-table.jpg') center no-repeat;
+    background-size: cover;
+    height: 100vh;
+    text-align: center;
+    color: aliceblue;
+    text-shadow: 0 7px 7px black;
+  }
+  
+  .landing__container > h1 {
+    font-size: 3rem;
+    margin: 0;
+  }
