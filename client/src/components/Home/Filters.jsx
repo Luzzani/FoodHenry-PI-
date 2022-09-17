@@ -31,7 +31,7 @@ function Filters(props) {
     <div>
       <Link to={"/createRecipe"}>Create Recipe</Link>
       <SearchBar />
-      <SelectFilter setCurrentPage={setCurrentPage} />;
+      <SelectFilter setCurrentPage={setCurrentPage} />
       <div>
         {alphabetical ? (
           <button onClick={filterAlphabeticalHandler}>From A to Z</button>
