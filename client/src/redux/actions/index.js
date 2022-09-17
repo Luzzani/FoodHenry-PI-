@@ -2,13 +2,14 @@ import axios from "axios";
 import {
   GET_ALL_RECIPE,
   GET_RECIPE_NAME,
-  //   GET_RECIPE_DETAIL,
+  GET_RECIPE_DETAIL,
   CREATE_RECIPE,
   ORDER_RECIPE,
   ORDER_HEALTH_SCORE,
   GET_LIST_DIETS,
   FILTER_DIETS,
-  //   PAGE_DETAIL,
+  BACK_PAGE,
+  PREVPAGINATED,
 } from "./actionsConst";
 
 export function getRecipes() {
@@ -79,4 +80,27 @@ export function postRecipe(recipe) {
     console.log(response);
     return dispatch({ type: CREATE_RECIPE });
   };
+}
+
+export function getDetail(id) {
+  return async function (dispatch) {
+    try {
+      let json = await axios.get("http://localhost:3001/recipes/" + id);
+      console.log(json.data);
+      return dispatch({
+        type: GET_RECIPE_DETAIL,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function prevPag(value) {
+  return { type: BACK_PAGE, payload: {} };
+}
+
+export function prevPaginated(number) {
+  return { type: PREVPAGINATED, payload: number };
 }

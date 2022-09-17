@@ -6,14 +6,17 @@ import {
   ORDER_HEALTH_SCORE,
   GET_RECIPE_NAME,
   CREATE_RECIPE,
-  //   GET_RECIPE_DETAIL,
-  //   PAGE_DETAIL,
+  GET_RECIPE_DETAIL,
+ BACK_PAGE,
+ PREVPAGINATED
 } from "../actions/actionsConst";
 
 const initialState = {
+  prevPaginated: 0,
   recipes: [],
   allRecipes: [],
   dietList: [],
+  recipeDetail: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -89,6 +92,24 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
+
+    case GET_RECIPE_DETAIL:
+      console.log(action.payload);
+      return {
+        ...state,
+        recipeDetail: action.payload,
+      };
+
+      case BACK_PAGE: return {
+        ...state, 
+        recipeDetail: action.payload
+        
+      }
+
+      case PREVPAGINATED: return {
+        ...state, 
+        prevPaginated: action.payload
+      }
 
     default:
       return state;

@@ -6,4 +6,5 @@ export const ORDER_RECIPE = 'ORDER_RECIPE';
 export const ORDER_HEALTH_SCORE = 'ORDER_HEALTH_SCORE';
 export const GET_LIST_DIETS = 'GET_LIST_DIETS';
 export const FILTER_DIETS = 'FILTER_DIETS';
-export const PAGE_DETAIL = 'PAGE_DETAIL';
+export const BACK_PAGE = 'BACK_PAGE';
+export const PREVPAGINATED = 'PREVPAGINATED'

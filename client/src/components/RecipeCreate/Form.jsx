@@ -46,9 +46,7 @@ function Form() {
       dietTypes: updatedList,
     });
 
-    if (send) {
-      setErrors(validate(input));
-    }
+    if (send) setErrors(validate(input));
   };
 
   const handleSubmit = (e) => {
@@ -77,15 +75,6 @@ function Form() {
     alert("Recipe created successfully");
 
     history.push("/home");
-
-    setInput({
-      name: "",
-      summary: "",
-      healthScore: 0,
-      steps: "",
-      image: "",
-      dietTypes: [],
-    });
   };
 
   return (

@@ -1,14 +1,16 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getRecipes } from "../../redux/actions";
-import Card from "../Card";
+import Card from "./Card";
 import Paginated from "./Paginated";
 import Filters from "./Filters";
 
 function Home() {
   const dispatch = useDispatch();
   const recipes = useSelector((state) => state.recipes);
+  const prevPaginated = useSelector((state) => state.prevPaginated);
 
   // estado para controlar el ordenamiento, creado en este componente para conseguir que se renderice correctamente
   const [alphabetical, setAlphabetical] = useState(true);
@@ -19,7 +21,10 @@ function Home() {
   // personajes por pagina inicializado en 9
   const recipePerPeage = 9;
   // indice de la ultima receta
-  const lastRecipeIndex = currentPage * recipePerPeage;
+  const lastRecipeIndex =
+    prevPaginated > 0
+      ? prevPaginated * recipePerPeage
+      : currentPage * recipePerPeage;
   // indice de la primer receta
   const fisrtRecipeIndex = lastRecipeIndex - recipePerPeage;
   //array con los 9 elementos correspondientes
@@ -36,6 +41,7 @@ function Home() {
 
   return (
     <section>
+      <Link to={"/"}>Return to the principal Page</Link>
       <Filters
         setCurrentPage={setCurrentPage}
         alphabetical={alphabetical}
@@ -54,9 +60,7 @@ function Home() {
             <Card
               key={e.id}
               name={e.name}
-              summary={e.summary}
               healthScore={e.healthScore}
-              steps={e.steps}
               image={e.image}
               id={e.id}
             />
