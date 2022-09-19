@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,400;0,600;1,300&display=swap');
+
+html {
+    font-family: 'Mali', cursive;
+}
+
+a {
+    text-decoration: none;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+}

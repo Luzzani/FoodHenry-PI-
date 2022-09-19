@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getRecipes } from "../../redux/actions";
 import Card from "./Card";
+import "./Home.css";
 import Paginated from "./Paginated";
 import Filters from "./Filters";
 
@@ -40,21 +41,27 @@ function Home() {
   };
 
   return (
-    <section>
-      <Link to={"/"}>Return to the principal Page</Link>
-      <Filters
-        setCurrentPage={setCurrentPage}
-        alphabetical={alphabetical}
-        setAlphabetical={setAlphabetical}
-        healthScore={healthScore}
-        setHealthScore={setHealthScore}
-      />
-      <Paginated
-        recipesPerPage={recipePerPeage}
-        allRecipes={recipes}
-        paginatedHandler={paginatedHandler}
-      />
+    <section className="home__container">
+      <Link to={"/"}>
+        <button className="home__button-back filter__button">
+          Return to the principal Page
+        </button>
+      </Link>
       <div>
+        <Filters
+          setCurrentPage={setCurrentPage}
+          alphabetical={alphabetical}
+          setAlphabetical={setAlphabetical}
+          healthScore={healthScore}
+          setHealthScore={setHealthScore}
+        />
+        <Paginated
+          recipesPerPage={recipePerPeage}
+          allRecipes={recipes}
+          paginatedHandler={paginatedHandler}
+        />
+      </div>
+      <div className="card__container">
         {currentRecipe.map((e) => {
           return (
             <Card

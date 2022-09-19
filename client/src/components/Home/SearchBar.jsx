@@ -15,6 +15,7 @@ function SearchBar() {
   return (
     <div>
       <input
+      className="filter__button"
         value={inputSearch}
         type="search"
         placeholder="Search by name..."
@@ -22,7 +23,7 @@ function SearchBar() {
           setInputSearch(e.target.value);
         }}
       />
-      <button onClick={() => searchHandler()}>Search</button>
+      <button className="filter__button" onClick={() => searchHandler()}>Search</button>
     </div>
   );
 }

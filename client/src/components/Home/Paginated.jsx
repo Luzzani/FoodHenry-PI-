@@ -1,6 +1,6 @@
-import React from "react";
 import { useDispatch } from "react-redux";
 import { prevPaginated } from "../../redux/actions";
+import "./Home.css";
 
 function Paginated({ recipesPerPage, allRecipes, paginatedHandler }) {
   const dispatch = useDispatch();
@@ -17,10 +17,21 @@ function Paginated({ recipesPerPage, allRecipes, paginatedHandler }) {
   }
 
   return (
-    <ul>
+    <ul className="paginated__container">
       {pageNum &&
         pageNum.map((num) => {
-          return <li key={num}>{<button onClick={() => prevPag(num)}>{num}</button>}</li>;
+          return (
+            <li key={num}>
+              {
+                <button
+                  className="paginated__number"
+                  onClick={() => prevPag(num)}
+                >
+                  {num}
+                </button>
+              }
+            </li>
+          );
         })}
     </ul>
   );

@@ -18,8 +18,8 @@ function SelectFilter({ setCurrentPage }) {
   };
 
   return (
-    <div>
-      <select onChange={(e) => dietFilterHandler(e)}>
+    <>
+      <select className="filter__button" onChange={(e) => dietFilterHandler(e)}>
         <option value="" disabled selected>
           Diet Types
         </option>
@@ -30,7 +30,7 @@ function SelectFilter({ setCurrentPage }) {
           </option>
         ))}
       </select>
-    </div>
+    </>
   );
 }
 

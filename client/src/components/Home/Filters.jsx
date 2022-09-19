@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { filterAlphabetically, filterScore } from "../../redux/actions";
 import SearchBar from "./SearchBar";
+import "./Home.css";
 import SelectFilter from "./SelectFilter";
 
 function Filters(props) {
@@ -28,23 +29,41 @@ function Filters(props) {
   };
 
   return (
-    <div>
-      <Link to={"/createRecipe"}>Create Recipe</Link>
+    <div className="filter__contianer">
+      <Link to={"/createRecipe"}>
+        <button className="filter__button">Create Recipe</button>
+      </Link>
       <SearchBar />
       <SelectFilter setCurrentPage={setCurrentPage} />
-      <div>
-        {alphabetical ? (
-          <button onClick={filterAlphabeticalHandler}>From A to Z</button>
-        ) : (
-          <button onClick={filterAlphabeticalHandler}>From Z to A</button>
-        )}
-      </div>
-      <div>
-        {healthScore ? (
-          <button onClick={filterHealthScore}>Highest health score</button>
-        ) : (
-          <button onClick={filterHealthScore}>Lowest health score</button>
-        )}
+      <div className="filters__buttons">
+        <div>
+          {alphabetical ? (
+            <button
+              className="filter__button"
+              onClick={filterAlphabeticalHandler}
+            >
+              From A to Z
+            </button>
+          ) : (
+            <button
+              className="filter__button"
+              onClick={filterAlphabeticalHandler}
+            >
+              From Z to A
+            </button>
+          )}
+        </div>
+        <div>
+          {healthScore ? (
+            <button className="filter__button" onClick={filterHealthScore}>
+              Highest health score
+            </button>
+          ) : (
+            <button className="filter__button" onClick={filterHealthScore}>
+              Lowest health score
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

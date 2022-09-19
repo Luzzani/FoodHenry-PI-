@@ -1,0 +1,250 @@
+.home__container {
+    background: fixed url('../../assets/image/vintage-old-rustic-cutlery-on-dark.jpg') no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.home__button-back {
+    border: 1px solid transparent;
+    padding: .4rem;
+    display: inline-block;
+    position: relative;
+    left: 45%;
+    margin-top: 1rem;
+}
+
+.card__container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    padding: 1rem;
+    height: 60vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.card__container::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.card__container::-webkit-scrollbar:vertical {
+    width: 10px;
+}
+
+.card__container::-webkit-scrollbar-button:increment,
+.card__container::-webkit-scrollbar-button {
+    display: none;
+}
+
+.card__container::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+.card__container::-webkit-scrollbar-thumb {
+    background-color: #ddd;
+    border-radius: 20px;
+    border: 2px solid rgba(96, 68, 28, 0.843)
+}
+
+.card__container::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+
+/*--------------- Filters component---------------------------*/
+
+.filter__contianer {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    transition: background-color 1s;
+    background-color: rgba(96, 68, 28, 0.843);
+    box-shadow: 0 0 7px 0 black;
+}
+
+.filter__contianer:hover {
+    background-color: rgba(85, 29, 174, 0.783);
+}
+
+.filter__button {
+    padding: .2rem;
+    border: 1px solid transparent;
+    border-radius: 7px;
+}
+
+.filter__button:hover {
+    cursor: pointer;
+}
+
+.filters__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: center;
+}
+
+/*--------------- Card component---------------------------*/
+
+.card__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 22rem;
+    height: 30rem;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    border: 1px solid transparent;
+    border-radius: 2rem;
+    padding: 1rem;
+    padding-top: 0;
+    background-color: rgba(255, 255, 255, 0.183);
+    box-shadow: 0 0 17px 0 black;
+}
+
+.card__title {
+    margin: 0;
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255);
+    text-shadow: 0 12px 17px rgba(96, 68, 28, 0.843);
+}
+
+.card__title-recipe {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255);
+    text-shadow: 0 0 7px black;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    padding: .4rem;
+    background-color: rgba(96, 68, 28, 0.843);
+    box-shadow: 0 0 7px 0 black;
+}
+
+.card__title-recipe:hover {
+    cursor: pointer;
+}
+
+.card__healthscore {
+    width: 100%;
+    text-align: center;
+    padding: .1rem 1rem .1rem 1rem;
+    box-shadow: 0 0 7px 0 black;
+    color: yellowgreen;
+    background-color: rgba(96, 68, 28, 0.843);
+}
+
+.card__image {
+    border-radius: 2rem;
+    box-shadow: 0 0 7px 0 black;
+}
+
+/*--------------- Paginated component---------------------------*/
+
+.paginated__container {
+    box-shadow: 0 0 7px 0 black;
+    display: flex;
+    gap: 2rem;
+    padding: .5rem;
+    background-color: rgba(96, 68, 28, 0.843);
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.paginated__number {
+    border-radius: .3rem;
+    box-shadow: 0 0 7px 0 black;
+    
+    border: 1px solid transparent;
+}
+
+.paginated__number:hover {
+    cursor: pointer;
+}
+
+.paginated__number:focus {
+    background-color: rgba(96, 68, 28, 0.843);
+    color: aliceblue;
+}
+
+
+/* ------------- MEDIA QUERIES (MEDIUM DEVICES) ------------- */
+
+@media screen and (max-width: 1024px) {
+    .home__button-back {
+        left: 35%;
+    }
+
+}
+
+
+/* ------------- MEDIA QUERIES (SMALL DEVICES) ------------- */
+
+@media screen and (max-width: 600px) {
+    .home__button-back {
+        margin: 0;
+        left: 25%;
+    }
+
+    .card__container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4rem;
+        padding: 1rem;
+        height: 60vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
+    /*--------------- Filters component---------------------------*/
+
+    .filter__contianer {
+        padding: .5rem;
+        flex-direction: column;
+        gap: .5rem;
+    }
+
+    .filter__contianer:hover {
+        background-color: rgba(85, 29, 174, 0.783);
+    }
+
+    .filter__button {
+        font-size: .9rem;
+        order: 1;
+    }
+
+    .filters__buttons {
+        flex-direction: row;
+        gap: .5rem;
+        align-items: center;
+    }
+
+    /*--------------- Card component---------------------------*/
+
+    .card__title {
+        font-size: 1.4rem;
+    }
+
+    .card__title-recipe {
+        font-size: 1.3rem;
+    }
+
+    .card__healthscore {
+        font-size: .9rem;
+    }
+
+    /*--------------- Paginated component---------------------------*/
+
+    .paginated__container {
+        margin-top: .5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: .5rem;
+        font-size: .9rem;
+    }
+}
