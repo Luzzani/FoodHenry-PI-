@@ -33,7 +33,7 @@ function Filters(props) {
       <Link to={"/createRecipe"}>
         <button className="filter__button">Create Recipe</button>
       </Link>
-      <SearchBar />
+      <SearchBar setCurrentPage={setCurrentPage} />
       <SelectFilter setCurrentPage={setCurrentPage} />
       <div className="filters__buttons">
         <div>

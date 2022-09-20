@@ -9,7 +9,6 @@ import {
   GET_LIST_DIETS,
   FILTER_DIETS,
   BACK_PAGE,
-  PREVPAGINATED,
 } from "./actionsConst";
 
 export function getRecipes() {
@@ -70,6 +69,10 @@ export function getRecipeByName(name) {
       });
     } catch (error) {
       console.log(error);
+      return dispatch({
+        type: GET_RECIPE_NAME,
+        payload: [{ error: name }],
+      });
     }
   };
 }
@@ -97,10 +100,6 @@ export function getDetail(id) {
   };
 }
 
-export function prevPag(value) {
+export function cleanPag(value) {
   return { type: BACK_PAGE, payload: {} };
-}
-
-export function prevPaginated(number) {
-  return { type: PREVPAGINATED, payload: number };
 }

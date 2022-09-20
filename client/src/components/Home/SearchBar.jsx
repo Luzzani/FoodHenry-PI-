@@ -3,19 +3,20 @@ import { useDispatch } from "react-redux";
 
 import { getRecipeByName } from "../../redux/actions";
 
-function SearchBar() {
-    const dispatch = useDispatch();
+function SearchBar({ setCurrentPage }) {
+  const dispatch = useDispatch();
   const [inputSearch, setInputSearch] = useState("");
 
   const searchHandler = () => {
     dispatch(getRecipeByName(inputSearch));
-    setInputSearch('')
+    setCurrentPage(1);
+    setInputSearch("");
   };
 
   return (
     <div>
       <input
-      className="filter__button"
+        className="filter__button"
         value={inputSearch}
         type="search"
         placeholder="Search by name..."
@@ -23,7 +24,9 @@ function SearchBar() {
           setInputSearch(e.target.value);
         }}
       />
-      <button className="filter__button" onClick={() => searchHandler()}>Search</button>
+      <button className="filter__button" onClick={() => searchHandler()}>
+        Search
+      </button>
     </div>
   );
 }

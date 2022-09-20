@@ -52,6 +52,14 @@
     border-radius: 10px;
 }
 
+.card__container-error {
+    font-size: 1.5rem;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    color: red;
+}
+
 
 /*--------------- Filters component---------------------------*/
 
@@ -200,6 +208,11 @@
         overflow-y: scroll;
         overflow-x: hidden;
     }
+
+    .card__container-error {
+        font-size: 1rem;
+    }
+    
 
     /*--------------- Filters component---------------------------*/
 

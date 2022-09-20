@@ -1,0 +1,29 @@
+.detail__container {
+    background: fixed url('../../assets/image/old-spoon-on-dark-table.jpg') no-repeat;
+    background-size: cover;
+    color: aliceblue;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detail__image-steps {
+    display: flex;
+    padding: 2rem;
+    gap: 10rem;
+}
+
+.detail__steps-list {
+    width: 75%;
+}
+
+.detail__image {
+    width: 500px;
+    border-radius: 20px;
+}

@@ -7,12 +7,10 @@ import {
   GET_RECIPE_NAME,
   CREATE_RECIPE,
   GET_RECIPE_DETAIL,
- BACK_PAGE,
- PREVPAGINATED
+  BACK_PAGE,
 } from "../actions/actionsConst";
 
 const initialState = {
-  prevPaginated: 0,
   recipes: [],
   allRecipes: [],
   dietList: [],
@@ -83,6 +81,7 @@ function rootReducer(state = initialState, action) {
       };
 
     case GET_RECIPE_NAME:
+      console.log(action.payload);
       return {
         ...state,
         recipes: action.payload,
@@ -100,16 +99,11 @@ function rootReducer(state = initialState, action) {
         recipeDetail: action.payload,
       };
 
-      case BACK_PAGE: return {
-        ...state, 
-        recipeDetail: action.payload
-        
-      }
-
-      case PREVPAGINATED: return {
-        ...state, 
-        prevPaginated: action.payload
-      }
+    case BACK_PAGE:
+      return {
+        ...state,
+        recipeDetail: action.payload,
+      };
 
     default:
       return state;

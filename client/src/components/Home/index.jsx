@@ -1,17 +1,18 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getRecipes } from "../../redux/actions";
 import Card from "./Card";
 import "./Home.css";
+import LoadingSpinner from "../LoadingSpinner";
 import Paginated from "./Paginated";
 import Filters from "./Filters";
 
 function Home() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const recipes = useSelector((state) => state.recipes);
-  const prevPaginated = useSelector((state) => state.prevPaginated);
 
   // estado para controlar el ordenamiento, creado en este componente para conseguir que se renderice correctamente
   const [alphabetical, setAlphabetical] = useState(true);
@@ -22,10 +23,7 @@ function Home() {
   // personajes por pagina inicializado en 9
   const recipePerPeage = 9;
   // indice de la ultima receta
-  const lastRecipeIndex =
-    prevPaginated > 0
-      ? prevPaginated * recipePerPeage
-      : currentPage * recipePerPeage;
+  const lastRecipeIndex = currentPage * recipePerPeage;
   // indice de la primer receta
   const fisrtRecipeIndex = lastRecipeIndex - recipePerPeage;
   //array con los 9 elementos correspondientes
@@ -35,7 +33,7 @@ function Home() {
     dispatch(getRecipes());
   }, [dispatch]);
 
-  // setear la pagina en el numero que eliga el usuario
+  // setear la pagina en el numero que elija el usuario
   const paginatedHandler = (pageNum) => {
     setCurrentPage(pageNum);
   };
@@ -61,19 +59,39 @@ function Home() {
           paginatedHandler={paginatedHandler}
         />
       </div>
-      <div className="card__container">
-        {currentRecipe.map((e) => {
-          return (
-            <Card
-              key={e.id}
-              name={e.name}
-              healthScore={e.healthScore}
-              image={e.image}
-              id={e.id}
-            />
-          );
-        })}
-      </div>
+      {!recipes.length ? (
+        <LoadingSpinner />
+      ) : (
+        <div className="card__container">
+          {!recipes[0].error ? (
+            currentRecipe.map((e) => {
+              return (
+                <Card
+                  key={e.id}
+                  name={e.name}
+                  healthScore={e.healthScore}
+                  image={e.image}
+                  id={e.id}
+                />
+              );
+            })
+          ) : (
+            <p className="card__container-error">
+              {recipes[0].error} recipe not found{" "}
+              <Link to={"/home"}>
+                <button
+                  className="filter__button"
+                  onClick={() => {
+                    history.go(0);
+                  }}
+                >
+                  Back
+                </button>
+              </Link>
+            </p>
+          )}
+        </div>
+      )}
     </section>
   );
 }
