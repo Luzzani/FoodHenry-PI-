@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
 import Form from "./Form";
+import "./RecipeCreate.css";
 
 function RecipeCreate() {
   return (
-    <div>
+    <div className="create__container">
       <Link to={"/home"}>
-        <button>Back to home</button>
+        <button className="create__button">Back to home</button>
       </Link>
+      <h2 className="create__title">Create your own recipe</h2>
       <Form />
-      <h2>Create your own recipe</h2>
     </div>
   );
 }

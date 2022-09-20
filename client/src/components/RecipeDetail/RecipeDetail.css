@@ -1,29 +1,220 @@
 .detail__container {
     background: fixed url('../../assets/image/old-spoon-on-dark-table.jpg') no-repeat;
-    background-size: cover;
-    color: aliceblue;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    color: aliceblue;
+    text-shadow: 0 0 12px #000;
+}
+
+.detail__title {
+    margin: 1rem 0 0 0;
 }
 
 .detail {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
 .detail__image-steps {
+    color: rgb(197, 138, 56);
+    text-shadow: 0 0 12px rgb(0, 0, 0);
+    font-weight: 600;
+    height: 85vh;
+    width: 100vw;
     display: flex;
-    padding: 2rem;
+    align-items: center;
+    padding: 0 2rem 0 10rem;
     gap: 10rem;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.183);
 }
 
-.detail__steps-list {
-    width: 75%;
+.detail__steps {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: fit-content;
+    margin-bottom: 2rem;
+    width: 80%;
+    font-size: 1.178rem;
+}
+
+.detail__steps::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.detail__steps::-webkit-scrollbar:vertical {
+    width: 10px;
+}
+
+.detail__steps::-webkit-scrollbar-button:increment,
+.detail__steps::-webkit-scrollbar-button {
+    display: none;
+}
+
+.detail__steps::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+.detail__steps::-webkit-scrollbar-thumb {
+    background-color: #ddd;
+    border-radius: 20px;
+    border: 2px solid rgba(96, 68, 28, 0.843)
+}
+
+.detail__steps::-webkit-scrollbar-track {
+    border-radius: 10px;
 }
 
 .detail__image {
-    width: 500px;
+    width: 30%;
     border-radius: 20px;
+    box-shadow: 0 0 7px 0 black;
+}
+
+.detail__span {
+    position: relative;
+    top: 5vh;
+    margin-bottom: .5rem;
+    padding: .1rem 1rem .1rem 1rem;
+    box-shadow: 0 0 7px 0 black;
+    background-color: rgba(96, 68, 28, 0.843);
+    color: yellowgreen;
+}
+
+.detail__description {
+    position: relative;
+    bottom: 20vh;
+    width: 75%;
+}
+
+.detail__description>a {
+    color: yellowgreen;
+    background-color: rgba(96, 68, 28, 0.843);
+}
+
+.detail__poistion {
+    position: relative;
+    top: -10vh;
+}
+
+.detail__spinner-center {
+    position: relative;
+    top: 45%;
+}
+
+
+/* ------------- MEDIA QUERIES (MEDIUM DEVICES) ------------- */
+
+@media screen and (max-width: 1204px) {
+    .detail__container {
+        overflow-y: scroll;
+    }
+
+
+    .detail__container::-webkit-scrollbar {
+        -webkit-appearance: none;
+    }
+
+    .detail__container::-webkit-scrollbar:vertical {
+        width: 10px;
+    }
+
+    .detail__container::-webkit-scrollbar-button:increment,
+    .detail__container::-webkit-scrollbar-button {
+        display: none;
+    }
+
+    .detail__container::-webkit-scrollbar:horizontal {
+        height: 10px;
+    }
+
+    .detail__container::-webkit-scrollbar-thumb {
+        background-color: #ddd;
+        border-radius: 20px;
+        border: 2px solid rgba(96, 68, 28, 0.843)
+    }
+
+    .detail {
+        height: auto;
+    }
+
+
+    .detail__title {
+        margin: 0;
+    }
+
+    .detail__image-steps {
+        padding: 0;
+        gap: 4rem;
+        flex-direction: column;
+        height: 100vh;
+    }
+
+    .detail__image {
+        margin-top: 2rem;
+        width: 35%;
+    }
+
+    .detail__span {
+        position: relative;
+        top: 0;
+        margin-bottom: .5rem;
+    }
+
+    .detail__steps {
+        width: 75%;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    .detail__description {
+        bottom: 0;
+    }
+
+    .detail__poistion {
+        position: relative;
+        top: 1vh;
+    }
+
+}
+
+
+/* ------------- MEDIA QUERIES (SMALL DEVICES) ------------- */
+
+@media screen and (max-width: 600px) {
+    .detail__container {
+        height: auto;
+        width: 100%
+    }
+
+    .detail__title {
+        font-size: 1.2rem;
+        margin: .5rem 0 .5rem 0;
+        text-align: center;
+    }
+
+    .detail__image-steps {
+        gap: 2rem;
+    }
+
+    .detail__image {
+        margin-top: 1rem;
+        width: 75%;
+    }
+    
+    
+    .detail__steps,
+    .detail__description {
+        width: 90%;
+        font-size: .9rem;
+    }
+    
+    .detail__steps {
+        overflow-x: scroll;
+    }
+    
+    
 }

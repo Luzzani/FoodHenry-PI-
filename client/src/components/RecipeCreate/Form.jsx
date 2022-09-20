@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { postRecipe, getDiets } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { validate } from "../../utils/utilsFunctions";
+import "./RecipeCreate.css";
 
 function Form() {
   const dispatch = useDispatch();
@@ -78,24 +79,25 @@ function Form() {
   };
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
+    <form className="form__container" onSubmit={(e) => handleSubmit(e)}>
+      <label htmlFor="steps">Recipe name: </label>
       <input
         placeholder="name"
         name="name"
         value={input.name}
         onChange={(e) => handleChange(e)}
       />
-      {errors.name && <p>{errors.name}</p>}
-      <label>
-        Healt Score:{" "}
-        <input
-          type="number"
-          name="healthScore"
-          value={input.healthScore}
-          onChange={(e) => handleChange(e)}
-        />
-      </label>
-      {errors.healthScore && <p>{errors.healthScore}</p>}
+      {errors.name && <span>{errors.name}</span>}
+      <label htmlFor="number">Healt Score: </label>
+      <input
+        id="number"
+        type="number"
+        name="healthScore"
+        value={input.healthScore}
+        onChange={(e) => handleChange(e)}
+      />
+      {errors.healthScore && <span>{errors.healthScore}</span>}
+      <label htmlFor="steps">Url image: </label>
       <input
         type="text"
         name="image"
@@ -103,35 +105,43 @@ function Form() {
         value={input.image}
         onChange={(e) => handleChange(e)}
       />
+      <label htmlFor="steps">Steps must be separated by a comma ','</label>
       <input
+        id="steps"
         placeholder="recipe steps"
         name="steps"
         value={input.steps}
         onChange={(e) => handleChange(e)}
       />
-      {errors.steps && <p>{errors.steps}</p>}
-      {dietList.map((e) => {
-        return (
-          <label key={e.id}>
-            {e.name}
-            <input
-              type="checkbox"
-              name={e.name}
-              value={e.name}
-              onChange={(e) => handleCheckbox(e)}
-            />
-          </label>
-        );
-      })}
-      {errors.dietTypes && <p>{errors.dietTypes}</p>}
+      {errors.steps && <span>{errors.steps}</span>}
+      <label>Diet types: </label>
+      <div className="form__diet-types">
+        {dietList.map((e) => {
+          return (
+            <label className="check__label" key={e.id}>
+              {e.name + ' '}
+              <input
+                type="checkbox"
+                name={e.name}
+                value={e.name}
+                onChange={(e) => handleCheckbox(e)}
+              />
+            </label>
+          );
+        })}
+      </div>
+      {errors.dietTypes && <span>{errors.dietTypes}</span>}
       <textarea
+      className="form__summary"
         placeholder="summary"
         name="summary"
         value={input.summary}
         onChange={(e) => handleChange(e)}
       />
-      {errors.summary && <p>{errors.summary}</p>}
-      <button type="submit">Send</button>
+      {errors.summary && <span>{errors.summary}</span>}
+      <button className="create__button" type="submit">
+        Send
+      </button>
     </form>
   );
 }
