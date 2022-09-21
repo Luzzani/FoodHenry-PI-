@@ -116,7 +116,7 @@ function Form() {
       {errors.steps && <span>{errors.steps}</span>}
       <label>Diet types: </label>
       <div className="form__diet-types">
-        {dietList.map((e) => {
+        {dietList?.map((e) => {
           return (
             <label className="check__label" key={e.id}>
               {e.name + ' '}

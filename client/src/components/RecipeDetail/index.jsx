@@ -10,7 +10,7 @@ function RecipeDetail(props) {
   const dispatch = useDispatch();
   const recipe = useSelector((state) => state.recipeDetail);
   const id = props.match.params.id;
-  console.log('asd',recipe);
+  console.log("asd", recipe);
 
   useEffect(() => {
     dispatch(getDetail(id));
@@ -22,7 +22,7 @@ function RecipeDetail(props) {
   return (
     <div className="detail__container">
       {!recipe.name ? (
-        <LoadingSpinner className={'detail__spinner-center'}/>
+        <LoadingSpinner className={"detail__spinner-center"} />
       ) : (
         <div className="detail">
           <Link to={"/home"}>
@@ -39,7 +39,13 @@ function RecipeDetail(props) {
           <span className="detail__span">
             Health Score: {recipe.healthScore}
           </span>
-          <span className="detail__span">Diet Types: {recipe.dishTypes}</span>
+          <span className="detail__span">
+            Diet Types:{" "}
+            {recipe.dishTypes ||
+              recipe.diets?.map((e) => {
+                return e.name + ", ";
+              })}
+          </span>
           <div className="detail__image-steps">
             <img
               className="detail__image detail__poistion"
