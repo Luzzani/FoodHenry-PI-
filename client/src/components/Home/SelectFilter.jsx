@@ -21,11 +21,12 @@ function SelectFilter({ setCurrentPage }) {
     <>
       <select className="filter__button" onChange={(e) => dietFilterHandler(e)}>
         <option value="all diet">All diet</option>
-        {listDiets?.map((e) => (
-          <option key={e.id} value={e.name}>
-            {e.name}
-          </option>
-        ))}
+        {listDiets &&
+          listDiets.map((e) => (
+            <option key={e.id} value={e.name}>
+              {e.name}
+            </option>
+          ))}
       </select>
     </>
   );
