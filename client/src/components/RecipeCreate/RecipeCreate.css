@@ -2,54 +2,63 @@
      background: fixed url(../../assets/image/tasty-fresh-appetizing-italian-food-ingredients-on-dark-background-ready-to-cook-home-italian-healthy-food-cooking-concept-toning.jpg) bottom;
      background-size: cover;
      height: 100vh;
-     display: flex;
+     padding: 1rem;
      overflow: hidden;
-     flex-direction: column;
-     justify-content: center;
-     gap: 1rem;
-    }
-    
+ }
+
  .create__title {
      color: aliceblue;
-     text-shadow: 0 0 7px black;
      text-align: center;
-     font-size: 2rem;
-     margin: 0;
-    }
-    
-    .create__button {
-        position: relative;
-        border: 1px solid transparent;
-        border-radius: 10px;
-        padding: .4rem;
-    }
-    
-    .create__button:hover {
-        cursor: pointer;
-    }
-    
-    /************************** Form Component ******************************/
-    
-    
-    .form__container {
-        border-radius: 20px;
-     box-shadow: 0 0 7px black;
-     padding: 1rem;
+     margin: .8rem;
+     font-size: 3rem;
+     text-shadow: 0 0 7px #000;
+ }
+
+ .create__button {
+     display: block;
+     margin: 0 auto;
+     border: 1px solid transparent;
+     border-radius: 7px;
+ }
+
+ .create__button:hover {
+     cursor: pointer;
+ }
+
+ /************************** Form Component ******************************/
+
+
+ .form__container {
      display: flex;
      flex-direction: column;
-     align-items: center;
+     align-items: stretch;
      gap: 1rem;
-     width: 600px;
+     width: 45%;
+     padding: 2rem;
+     border-radius: 20px;
+     box-shadow: 0 0 7px black;
      background-color: rgba(115, 106, 106, 0.574);
      color: aliceblue;
      margin: 0 auto;
+ }
+
+ .form__container>label>input {
+     width: 100%;
+     border-radius: 10px;
+     border: 1px solid transparent;
+     padding: .2rem;
+ }
+
+ .form__container>label>textarea {
+     border-radius: 10px;
+     border: 1px solid transparent;
  }
 
  .form__container>label {
      font-weight: 600;
  }
 
- .form__container>span {
+ .form__container span {
      color: crimson;
      text-shadow: 0 0 7px black;
      font-weight: 600;
@@ -63,95 +72,59 @@
 
 
  .form__diet-types {
-     display: grid;
-     grid-template-columns: repeat(2, 1fr);
+     display: flex;
+     flex-wrap: wrap;
      gap: 1rem;
+     padding: .5rem;
  }
 
 
  .form__summary {
      resize: none;
-     width: 75%;
+     width: 100%;
+     margin: 0 auto;
+     display: block;
      height: 74px;
  }
 
  /* ------------- MEDIA QUERIES (MEDIUM DEVICES) ------------- */
 
  @media screen and (max-width: 1204px) {
-    .create__container {
-        padding: 1rem;
-        justify-content: start;
-        gap: 1rem;
-       }
-       
      .create__title {
-         font-size: 1.5rem;
-         margin: 0;
+         font-size: 2.5rem;
      }
 
      /************************** Form Component ******************************/
 
      .form__container {
-         width: 55%;
+         gap: 1rem;
+         width: 65%;
+         padding: 1rem;
      }
 
  }
 
  /* ------------- MEDIA QUERIES (SMALL DEVICES) ------------- */
 
- @media screen and (max-width: 700px) {
+ @media screen and (max-width: 600px) {
+
      .create__container {
-        padding: 1.5rem 0 3rem 0;
-         height: 100vh;
-         overflow-y: scroll;
+         height: 120vh;
      }
 
      .create__title {
-         font-size: 1.2rem;
+         font-size: 2rem;
      }
-
-     .create__button {
-         font-size: .9rem;
-     }
-
 
      /************************** Form Component ******************************/
 
      .form__container {
-         padding: 0;
          gap: 1rem;
-         width: 100%;
+         width: 90%;
      }
 
-     /*    
-   
-    .form__container>label {
-        font-weight: 600;
-    }
-   
-    .form__container>span {
-        color: crimson;
-        text-shadow: 0 0 7px black;
-        font-weight: 600;
-    }
-   
-    .form__container .check__label {
-        font-size: .9rem;
-        font-weight: 200;
-        text-transform: capitalize;
-    }
-   
-   
-    .form__diet-types {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-    }
-   
-   
-    .form__summary {
-        resize: none;
-        width: 75%;
-        height: 74px;
-    } */
+     .form__diet-types {
+         gap: .5rem;
+         padding: 0;
+     }
  }

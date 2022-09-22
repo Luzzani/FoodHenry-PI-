@@ -80,64 +80,74 @@ function Form() {
 
   return (
     <form className="form__container" onSubmit={(e) => handleSubmit(e)}>
-      <label htmlFor="steps">Recipe name: </label>
-      <input
-        placeholder="name"
-        name="name"
-        value={input.name}
-        onChange={(e) => handleChange(e)}
-      />
+      <label htmlFor="steps">
+        Recipe name:
+        <input
+          placeholder="name"
+          name="name"
+          value={input.name}
+          onChange={(e) => handleChange(e)}
+        />
+      </label>
       {errors.name && <span>{errors.name}</span>}
-      <label htmlFor="number">Healt Score: </label>
-      <input
-        id="number"
-        type="number"
-        name="healthScore"
-        value={input.healthScore}
-        onChange={(e) => handleChange(e)}
-      />
+      <label htmlFor="number">
+        Healt Score:
+        <input
+          id="number"
+          type="number"
+          name="healthScore"
+          value={input.healthScore}
+          onChange={(e) => handleChange(e)}
+        />
+      </label>
       {errors.healthScore && <span>{errors.healthScore}</span>}
-      <label htmlFor="steps">Url image: </label>
-      <input
-        type="text"
-        name="image"
-        placeholder="image url"
-        value={input.image}
-        onChange={(e) => handleChange(e)}
-      />
-      <label htmlFor="steps">Steps must be separated by a comma ','</label>
-      <input
-        id="steps"
-        placeholder="recipe steps"
-        name="steps"
-        value={input.steps}
-        onChange={(e) => handleChange(e)}
-      />
+      <label htmlFor="steps">
+        Url image:
+        <input
+          type="text"
+          name="image"
+          placeholder="image url"
+          value={input.image}
+          onChange={(e) => handleChange(e)}
+        />
+      </label>
+      <label htmlFor="steps">
+        Steps must be separated by a comma ','
+        <input
+          id="steps"
+          placeholder="recipe steps"
+          name="steps"
+          value={input.steps}
+          onChange={(e) => handleChange(e)}
+        />
+      </label>
       {errors.steps && <span>{errors.steps}</span>}
-      <label>Diet types: </label>
-      <div className="form__diet-types">
-        {dietList?.map((e) => {
-          return (
-            <label className="check__label" key={e.id}>
-              {e.name + ' '}
-              <input
-                type="checkbox"
-                name={e.name}
-                value={e.name}
-                onChange={(e) => handleCheckbox(e)}
-              />
-            </label>
-          );
-        })}
-      </div>
-      {errors.dietTypes && <span>{errors.dietTypes}</span>}
-      <textarea
-      className="form__summary"
-        placeholder="summary"
-        name="summary"
-        value={input.summary}
-        onChange={(e) => handleChange(e)}
-      />
+      <label>
+        Diet types:
+        <div className="form__diet-types">
+          {dietList?.map((e) => {
+            return (
+              <label className="check__label" key={e.id}>
+                {e.name + " "}
+                <input
+                  type="checkbox"
+                  name={e.name}
+                  value={e.name}
+                  onChange={(e) => handleCheckbox(e)}
+                />
+              </label>
+            );
+          })}
+        {errors.dietTypes && <span>{errors.dietTypes}</span>}
+        </div>
+        <textarea
+          className="form__summary"
+          placeholder="summary"
+          name="summary"
+          value={input.summary}
+          onChange={(e) => handleChange(e)}
+        />
+      </label>
       {errors.summary && <span>{errors.summary}</span>}
       <button className="create__button" type="submit">
         Send

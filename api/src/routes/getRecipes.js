@@ -49,6 +49,7 @@ router.get("/:idRecipe", async (req, res) => {
         return {
           number: e.number,
           step: e.step,
+          ingredients: e.ingredients,
         };
       }),
     };
