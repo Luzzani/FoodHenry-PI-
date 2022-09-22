@@ -64,7 +64,7 @@ function Home() {
       ) : (
         <div className="card__container">
           {!recipes[0].error ? (
-            currentRecipe.map((e) => {
+            currentRecipe?.map((e) => {
               return (
                 <Card
                   key={e.id}

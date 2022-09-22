@@ -80,7 +80,7 @@ export function getRecipeByName(name) {
 export function postRecipe(recipe) {
   return async function (dispatch) {
     const response = await axios.post(
-      `${axios.defaults.baseURL}/recipes`,
+      `${axios.defaults.baseURL}/api/recipes`,
       recipe
     );
     console.log(response);
