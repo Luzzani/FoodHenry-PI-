@@ -1,6 +1,6 @@
 const axios = require("axios");
 const { Recipe, Diet } = require("../db");
-const { API_KEY3 } = process.env;
+const { API_KEY7 } = process.env;
 
 //
 
@@ -21,7 +21,7 @@ const getInfoApi = async () => {
         return {
           number: e.number,
           step: e.step,
-          //tambien hay un array de objetos con los ingredientes y un array con un objeto: el equipamento .
+          ingredients: e.ingredients,
         };
       }),
     };
@@ -40,7 +40,7 @@ const getInfoDB = async () => {
 
 const getApiInfoById = async (id) => {
   return await axios.get(
-    `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY3}`
+    `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY7}`
   );
 };
 

@@ -19,7 +19,7 @@ function SelectFilter({ setCurrentPage }) {
 
   return (
     <>
-      <select className="filter__button" onChange={(e) => dietFilterHandler(e)}>
+      <select className="filter__button select__button" onChange={(e) => dietFilterHandler(e)}>
         <option value="all diet">All diet</option>
         {listDiets &&
           listDiets.map((e) => (

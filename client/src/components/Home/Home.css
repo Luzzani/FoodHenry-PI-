@@ -96,6 +96,13 @@
     align-items: center;
 }
 
+/*--------------- Searchbar component---------------------------*/
+
+.search__container {
+    display: flex;
+}
+
+
 /*--------------- Card component---------------------------*/
 
 .card__content {
@@ -113,6 +120,13 @@
     padding-top: 0;
     background-color: rgba(255, 255, 255, 0.183);
     box-shadow: 0 0 17px 0 black;
+    transition: all 1s ease-in-out;
+}
+
+.card__content:hover {
+    box-shadow: 0 0 10px 0 #fff;
+    border: 1px solid #000;
+    background-color: rgba(255, 255, 255, 0.283);
 }
 
 .card__title {
@@ -120,6 +134,11 @@
     font-size: 1.5rem;
     color: rgba(255, 255, 255);
     text-shadow: 0 12px 17px rgba(96, 68, 28, 0.843);
+}
+
+.card__title:hover {
+    text-shadow: 0 12px 17px #000;
+    cursor: pointer;
 }
 
 .card__title-recipe {
@@ -148,6 +167,7 @@
 }
 
 .card__image {
+    max-width: 100%;
     border-radius: 2rem;
     box-shadow: 0 0 7px 0 black;
 }
@@ -188,6 +208,19 @@
         left: 35%;
     }
 
+    /*--------------- Filters component---------------------------*/
+
+    .filter__contianer {
+        flex-wrap: wrap;
+        justify-content: stretch;
+        gap: 1rem;
+    }
+
+    .filters__buttons {
+        flex-direction: row;
+        gap: .5rem;
+        align-items: center;
+    }
 }
 
 
@@ -210,7 +243,7 @@
     }
 
     .card__healthscore {
-        width: 80%; 
+        width: 80%;
         text-align: center;
         border-radius: 1rem;
     }
@@ -223,8 +256,7 @@
     /*--------------- Filters component---------------------------*/
 
     .filter__contianer {
-        padding: .5rem;
-        flex-direction: column;
+        padding: 1rem;
         gap: .5rem;
     }
 
@@ -237,20 +269,33 @@
         order: 1;
     }
 
-    .filters__buttons {
-        flex-direction: row;
-        gap: .5rem;
-        align-items: center;
+    .select__button {
+        width: 95%;
+    }
+
+    /*--------------- Searchbar component---------------------------*/
+
+    .search__container {
+        width: 100%;
+    }
+
+    .search__input {
+        width: 75%;
+    }
+
+    .search__button {
+        width: 20%;
     }
 
     /*--------------- Card component---------------------------*/
 
+
     .card__content {
-        gap: 0rem;
-        width: 22rem;
-        height: 28rem;
+        gap: 1rem;
+        width: 100%;
+        height: auto;
         justify-content: space-around;
-        padding: 0;
+        padding: 1rem;
     }
 
     .card__title {
@@ -263,6 +308,10 @@
 
     .card__healthscore {
         font-size: .9rem;
+    }
+
+    .card__image {
+        width: 95%;
     }
 
     /*--------------- Paginated component---------------------------*/
