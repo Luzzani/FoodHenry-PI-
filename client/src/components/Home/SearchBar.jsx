@@ -10,7 +10,7 @@ function SearchBar({ setCurrentPage }) {
   const searchHandler = () => {
     dispatch(getRecipeByName(inputSearch));
     setCurrentPage(1);
-    setPageNumPrev(1)
+    dispatch(setPageNumPrev(1));
     setInputSearch("");
   };
 
@@ -25,7 +25,10 @@ function SearchBar({ setCurrentPage }) {
           setInputSearch(e.target.value);
         }}
       />
-      <button className="filter__button search__button" onClick={() => searchHandler()}>
+      <button
+        className="filter__button search__button"
+        onClick={() => searchHandler()}
+      >
         Search
       </button>
     </div>

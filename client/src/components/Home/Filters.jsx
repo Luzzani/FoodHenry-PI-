@@ -1,6 +1,10 @@
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { filterAlphabetically, filterScore } from "../../redux/actions";
+import {
+  filterAlphabetically,
+  filterScore,
+  setPageNumPrev,
+} from "../../redux/actions";
 import SearchBar from "./SearchBar";
 import "./Home.css";
 import SelectFilter from "./SelectFilter";
@@ -19,11 +23,13 @@ function Filters(props) {
   const filterAlphabeticalHandler = () => {
     dispatch(filterAlphabetically(alphabetical));
     setCurrentPage(1);
+    dispatch(setPageNumPrev(1));
     setAlphabetical((prevState) => !prevState);
   };
 
   const filterHealthScore = () => {
     dispatch(filterScore(healthScore));
+    dispatch(setPageNumPrev(1));
     setCurrentPage(1);
     setHealthScore((prevState) => !prevState);
   };
