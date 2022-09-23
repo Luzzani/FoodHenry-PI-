@@ -9,6 +9,7 @@ import {
   GET_LIST_DIETS,
   FILTER_DIETS,
   BACK_PAGE,
+  RETURN_PAGE
 } from "./actionsConst";
 
 export function getRecipes() {
@@ -105,4 +106,11 @@ export function getDetail(id) {
 
 export function cleanPag(value) {
   return { type: BACK_PAGE, payload: {} };
+}
+
+export function setPageNumPrev(prevNum) {
+  return {
+    type: RETURN_PAGE,
+    payload: prevNum,
+  };
 }

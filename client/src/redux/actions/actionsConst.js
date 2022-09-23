@@ -9,3 +9,4 @@ export const FILTER_DIETS = "FILTER_DIETS";
 export const BACK_PAGE = "BACK_PAGE";
 export const PREVPAGINATED = "PREVPAGINATED";
 export const IS_BACK_PAGE = "IS_BACK_PAGE";
+export const RETURN_PAGE = "RETURN_PAGE";

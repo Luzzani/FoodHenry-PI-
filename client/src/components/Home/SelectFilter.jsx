@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterRecipesByDiet, getDiets } from "../../redux/actions";
+import { filterRecipesByDiet, getDiets, setPageNumPrev } from "../../redux/actions";
 
 function SelectFilter({ setCurrentPage }) {
   const dispatch = useDispatch();
@@ -10,11 +10,13 @@ function SelectFilter({ setCurrentPage }) {
     if (listDiets.length === 0) {
       dispatch(getDiets());
     }
+
   }, [dispatch, listDiets]);
 
   const dietFilterHandler = (e) => {
     dispatch(filterRecipesByDiet(e.target.value));
-    setCurrentPage(1);
+    setPageNumPrev(1);
+    setCurrentPage(1)
   };
 
   return (

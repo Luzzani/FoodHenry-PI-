@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getRecipes } from "../../redux/actions";
+import { getRecipes, setPageNumPrev } from "../../redux/actions";
 import Card from "./Card";
 import "./Home.css";
 import LoadingSpinner from "../LoadingSpinner";
@@ -13,13 +13,14 @@ function Home() {
   const dispatch = useDispatch();
   const history = useHistory();
   const recipes = useSelector((state) => state.recipes);
+  const prevPage = useSelector((state) => state.prevPage);
 
   // estado para controlar el ordenamiento, creado en este componente para conseguir que se renderice correctamente
   const [alphabetical, setAlphabetical] = useState(true);
   const [healthScore, setHealthScore] = useState(true);
   //Paginado
   // pagina actual inicializada en 1 y funcion actualizadora de la pagina actual
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(prevPage);
   // personajes por pagina inicializado en 9
   const recipePerPeage = 9;
   // indice de la ultima receta
@@ -30,12 +31,15 @@ function Home() {
   const currentRecipe = recipes.slice(fisrtRecipeIndex, lastRecipeIndex);
 
   useEffect(() => {
-    dispatch(getRecipes());
-  }, [dispatch]);
+    if (!recipes.length) {
+      dispatch(getRecipes());
+    }
+  }, [recipes, dispatch]);
 
   // setear la pagina en el numero que elija el usuario
   const paginatedHandler = (pageNum) => {
     setCurrentPage(pageNum);
+    dispatch(setPageNumPrev(pageNum));
   };
 
   return (

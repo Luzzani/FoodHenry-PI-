@@ -1,6 +1,10 @@
 const axios = require("axios");
 const { Recipe, Diet } = require("../db");
+<<<<<<< HEAD
 const { API_KEY3 } = process.env;
+=======
+const { API_KEY5 } = process.env;
+>>>>>>> develop
 
 //
 
@@ -40,7 +44,11 @@ const getInfoDB = async () => {
 
 const getApiInfoById = async (id) => {
   return await axios.get(
+<<<<<<< HEAD
     `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY3}`
+=======
+    `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY5}`
+>>>>>>> develop
   );
 };
 
