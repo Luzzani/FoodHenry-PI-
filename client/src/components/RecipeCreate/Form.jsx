@@ -26,9 +26,11 @@ function Form() {
   }, [dispatch]);
 
   const handleChange = (e) => {
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
+    setInput((prevState) => {
+      return {
+        ...prevState,
+        [e.target.name]: e.target.value,
+      };
     });
     if (send) {
       setErrors(validate(input));
@@ -138,7 +140,7 @@ function Form() {
               </label>
             );
           })}
-        {errors.dietTypes && <span>{errors.dietTypes}</span>}
+          {errors.dietTypes && <span>{errors.dietTypes}</span>}
         </div>
         <textarea
           className="form__summary"
