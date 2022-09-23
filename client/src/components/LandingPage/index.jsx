@@ -1,13 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import LoginButton from "../Loginbuttons/LoginButton";
+import LogoutButton from "../Loginbuttons/LogoutButton";
+import { useAuth0 } from "@auth0/auth0-react";
 
 import "./LandingPage.css";
 
 function LandingPage() {
+  const { isAuthenticated } = useAuth0();
+  console.log(isAuthenticated);
+
   return (
     <section className="landing__container">
-      <h1>Recipes & Recipes</h1>
+      {isAuthenticated ? (
+        <LogoutButton className="landing__content-button" />
+      ) : (
+        <LoginButton className="landing__content-button" content={"Login"} />
+      )}
 
+      <h1>Recipes & Recipes</h1>
       <div className="landing__content">
         <article className="landing__content-text">
           <h2 className="landing__content-title">About Us</h2>
@@ -16,11 +27,17 @@ function LandingPage() {
             fattest. You can filter by type of diet, by its healthy level, and
             by name! By generating a user, you can contribute with your own
             recipes, following the corresponding instructions. You can create
-            and delete your own recipes <button className="landing__content-button">Register Free</button>
+            and delete your own recipes{" "}
+            <LoginButton
+              className="landing__content-button"
+              content={"Register Free"}
+            />
           </p>
         </article>
         <Link to={"/home"}>
-          <button className="landing__content-button landing__button">Go to Recipies</button>
+          <button className="landing__content-button landing__button">
+            Go to Recipies
+          </button>
         </Link>
       </div>
     </section>

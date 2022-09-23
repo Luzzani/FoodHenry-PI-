@@ -8,8 +8,11 @@ import {
 import SearchBar from "./SearchBar";
 import "./Home.css";
 import SelectFilter from "./SelectFilter";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Filters(props) {
+  const { isAuthenticated } = useAuth0();
+
   const {
     setCurrentPage,
     alphabetical,
@@ -36,9 +39,13 @@ function Filters(props) {
 
   return (
     <div className="filter__contianer">
-      <Link to={"/createRecipe"}>
-        <button className="filter__button">Create Recipe</button>
-      </Link>
+      {isAuthenticated ? (
+        <Link to={"/createRecipe"}>
+          <button className="filter__button">Create Recipe</button>
+        </Link>
+      ) : (
+        <></>
+      )}
       <SearchBar setCurrentPage={setCurrentPage} />
       <SelectFilter setCurrentPage={setCurrentPage} />
       <div className="filters__buttons">
