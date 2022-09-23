@@ -1,8 +1,12 @@
 import "./Home.css";
+import { useSelector } from "react-redux";
 
 function Paginated({ recipesPerPage, allRecipes, paginatedHandler }) {
+  const prevPage = useSelector((state) => {
+    return state.prevPage;
+  });
 
- const prevPag = (num) => {
+  const prevPag = (num) => {
     paginatedHandler(num);
   };
 
@@ -20,7 +24,11 @@ function Paginated({ recipesPerPage, allRecipes, paginatedHandler }) {
             <li key={num}>
               {
                 <button
-                  className="paginated__number"
+                  className={
+                    num === prevPage
+                      ? "paginated__number paginated__isActive"
+                      : "paginated__number"
+                  }
                   onClick={() => prevPag(num)}
                 >
                   {num}

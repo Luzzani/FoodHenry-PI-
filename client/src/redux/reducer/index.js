@@ -8,6 +8,7 @@ import {
   CREATE_RECIPE,
   GET_RECIPE_DETAIL,
   BACK_PAGE,
+  RETURN_PAGE,
 } from "../actions/actionsConst";
 
 const initialState = {
@@ -15,6 +16,7 @@ const initialState = {
   allRecipes: [],
   dietList: [],
   recipeDetail: [],
+  prevPage: 1,
 };
 
 function rootReducer(state = initialState, action) {
@@ -81,7 +83,6 @@ function rootReducer(state = initialState, action) {
       };
 
     case GET_RECIPE_NAME:
-      console.log(action.payload);
       return {
         ...state,
         recipes: action.payload,
@@ -93,7 +94,6 @@ function rootReducer(state = initialState, action) {
       };
 
     case GET_RECIPE_DETAIL:
-      console.log(action.payload);
       return {
         ...state,
         recipeDetail: action.payload,
@@ -103,6 +103,12 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         recipeDetail: action.payload,
+      };
+
+    case RETURN_PAGE:
+      return {
+        ...state,
+        prevPage: action.payload,
       };
 
     default:

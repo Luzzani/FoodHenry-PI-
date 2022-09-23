@@ -195,7 +195,12 @@
     cursor: pointer;
 }
 
-.paginated__number:focus {
+/* .paginated__number:focus {
+    background-color: rgba(96, 68, 28, 0.843);
+    color: aliceblue;
+} */
+
+.paginated__isActive {
     background-color: rgba(96, 68, 28, 0.843);
     color: aliceblue;
 }

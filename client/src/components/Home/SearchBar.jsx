@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import "./Home.css";
-import { getRecipeByName } from "../../redux/actions";
+import { getRecipeByName, setPageNumPrev } from "../../redux/actions";
 
 function SearchBar({ setCurrentPage }) {
   const dispatch = useDispatch();
@@ -10,6 +10,7 @@ function SearchBar({ setCurrentPage }) {
   const searchHandler = () => {
     dispatch(getRecipeByName(inputSearch));
     setCurrentPage(1);
+    setPageNumPrev(1)
     setInputSearch("");
   };
 

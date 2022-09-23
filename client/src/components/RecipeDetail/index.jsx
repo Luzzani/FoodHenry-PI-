@@ -9,8 +9,9 @@ import "../Home/Home.css";
 function RecipeDetail(props) {
   const dispatch = useDispatch();
   const recipe = useSelector((state) => state.recipeDetail);
+  const recipes = useSelector((state) => state.recipes);
   const id = props.match.params.id;
-  console.log("detailRecipe", recipe);
+  console.log({ detailAll: recipes, detailOne: recipe });
 
   useEffect(() => {
     dispatch(getDetail(id));
@@ -55,8 +56,13 @@ function RecipeDetail(props) {
                     </p>
                     <ul>
                       <h4>Ingredients: </h4>
-                      {e.ingredients?.length ? e.ingredients.map((e) => {
-                        return <li>{e.name}</li>}) : <li>No ingredients</li>}
+                      {e.ingredients?.length ? (
+                        e.ingredients.map((e) => {
+                          return <li>{e.name}</li>;
+                        })
+                      ) : (
+                        <li>No ingredients</li>
+                      )}
                     </ul>
                   </li>
                 );
