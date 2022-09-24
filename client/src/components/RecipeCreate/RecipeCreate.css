@@ -25,6 +25,24 @@
      cursor: pointer;
  }
 
+ /* /-----------------------------create denied--------------------------/ */
+
+ .create__container-denied {
+     width: 100vw;
+     height: 100vh;
+     overflow: hidden;
+     background: url(../../assets/image/Set_of_smiling_cute_chef_in_different_postures_cartoon_illustration_Premium_Vector.jpg) no-repeat bottom;
+     background-size: contain;
+     padding-top: 2rem;
+ }
+
+ .create__denied {
+     color: crimson;
+     position: relative;
+     text-align: center;
+     font-size: 2rem;
+ }
+
  /************************** Form Component ******************************/
 
 
@@ -116,7 +134,18 @@
          font-size: 2rem;
      }
 
+
+     /* /-----------------------------create denied--------------------------/ */
+
+     .create__denied {
+         font-size: 1.5rem;
+     }
+
+
+
      /************************** Form Component ******************************/
+
+
 
      .form__container {
          gap: 1rem;

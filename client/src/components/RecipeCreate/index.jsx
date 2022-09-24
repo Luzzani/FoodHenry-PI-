@@ -7,7 +7,7 @@ function RecipeCreate() {
   const { isAuthenticated } = useAuth0();
 
   return (
-    <div className="create__container">
+    <div className={isAuthenticated ? "create__container" : 'create__container-denied'}>
       {isAuthenticated ? (
         <>
           <Link to={"/home"}>
@@ -17,7 +17,14 @@ function RecipeCreate() {
           <Form />
         </>
       ) : (
-        <h2>You must be logged in to upload your own recipes</h2>
+        <>
+          <Link to={"/home"}>
+            <button className="create__button">Back to home</button>
+          </Link>
+          <h2 className="create__denied">
+            You must be logged in to upload your own recipes
+          </h2>
+        </>
       )}
     </div>
   );

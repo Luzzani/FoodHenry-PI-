@@ -1,19 +1,22 @@
 .detail__container {
     width: 100vw;
-    background: fixed url(../../assets/image/old-spoon-on-dark-table.jpg) 50%;
-    background-size: cover;
+    /* background: fixed url('https://img.freepik.com/foto-gratis/concepto-banner-supermercado-ingredientes_23-2149421146.jpg?w=1800&t=st=1663982803~exp=1663983403~hmac=3d7138262a78280a5600e787ddc2d47e1fa858147e2e504ccf7517d5d8ecfcc6') no-repeat center; */
+    background: fixed url('https://img.freepik.com/foto-gratis/bolsa-hilo-verduras-frutas-sobre-fondo-bicolor_185193-84598.jpg?w=740&t=st=1663982540~exp=1663983140~hmac=8e0b45eddf7e9097dffc6cb10edb00f691790f4cd88c869eab5a1ab8b8599919') no-repeat right;
+
+    background-size: contain;
     color: aliceblue;
     text-shadow: 0 0 7px #000;
     overflow: hidden;
 }
 
 .detail__content {
-    width: 75%;
+    width: 65%;
     margin: 0 auto;
     padding: 1rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    background-color: rgba(6, 4, 3, 0.633);
 }
 
 .detail__content-link {
@@ -55,7 +58,6 @@
 
 .detail__content-summary {
     font-size: 1.3rem;
-    text-align: justify;
     line-height: 1.5rem;
 }
 
@@ -108,9 +110,7 @@
 
 @media screen and (max-width: 1028px) {
     .detail__container {
-        width: 100vw;
-        background: fixed url(../../assets/image/old-spoon-on-dark-table.jpg) 60%;
-        background-size: cover;
+        background: none;
     }
 
     .detail__content {
@@ -152,10 +152,11 @@
 /* ------------- MEDIA QUERIES (SMALL DEVICES) ------------- */
 
 @media screen and (max-width: 750px) {
-    .detail__container {
+    /* .detail__container {
         background: fixed url(../../assets/image/old-spoon-on-dark-table.jpg) 20%;
         background-size: cover;
-    }
+    } 
+    */
 
     .detail__content {
         width: auto;
@@ -211,7 +212,7 @@
         font-size: 1.2rem;
     }
 
-    .detail__content-stepscontainer{
+    .detail__content-stepscontainer {
         margin: 0;
         padding: 0;
     }

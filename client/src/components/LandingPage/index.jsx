@@ -1,19 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LoginButton from "../Loginbuttons/LoginButton";
-import LogoutButton from "../Loginbuttons/LogoutButton";
+import LoginButton from "../Logbuttons/LoginButton";
+import LogoutButton from "../Logbuttons/LogoutButton";
 import { useAuth0 } from "@auth0/auth0-react";
 
 import "./LandingPage.css";
 
 function LandingPage() {
   const { isAuthenticated } = useAuth0();
-  console.log(isAuthenticated);
 
   return (
     <section className="landing__container">
       {isAuthenticated ? (
-        <LogoutButton className="landing__content-button" />
+        <>
+          <LogoutButton className="landing__content-button" />
+          <Link to={"/profile"}>
+            <button className='landing__content-button landgin__profile-btn'>Profile</button>
+          </Link>
+        </>
       ) : (
         <LoginButton className="landing__content-button" content={"Login"} />
       )}

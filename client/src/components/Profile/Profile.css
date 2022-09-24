@@ -1,0 +1,100 @@
+.profile__container {
+    background: url(../../assets/image/Set_of_smiling_cute_chef_in_different_postures_cartoon_illustration_Premium_Vector.jpg) no-repeat bottom;
+    background-size: contain;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ----------------------------- denied ------------------------------------ */
+
+.profile__denied {
+    text-align: center;
+}
+
+.profile__denied>h2 {
+    color: crimson;
+    font-size: 2rem;
+}
+
+/* ----------------------------- allowed ------------------------------------ */
+
+.profile__wrapper {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+    gap: 10vh;
+}
+
+.profile__content {
+    padding: 1rem;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd;
+    margin: 0 auto;
+}
+
+.profile__content-top {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid transparent;
+    padding: 2rem;
+}
+
+.profile__content-top .profile__content-nickname {
+    border: 1px solid transparent;
+    border-radius: 10px;
+    box-shadow: 0 0 7px 0 black;
+    padding: .2rem;
+}
+
+.profile__content-top .profile__content-image {
+    border-radius: 10px;
+    box-shadow: 0 0 7px 0 black;
+    width: 150px;
+}
+
+
+/* ------------- MEDIA QUERIES (SMALL DEVICES) ------------- */
+
+@media screen and (max-width: 600px) {
+    /* ----------------------------- denied ------------------------------------ */
+
+    .profile__denied>h2 {
+        font-size: 1.5rem;
+    }
+
+    /* ----------------------------- allowed ------------------------------------ */
+    .profile__wrapper {
+        align-items: flex-start;
+    }
+
+    .profile__content {
+        width: 100%;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .profile__content-top {
+        padding: 1rem;
+    }
+
+    .profile__content-top .profile__content-image {
+        width: 100px;
+    }
+
+    .profile__content-title {
+        font-size: 1.2rem;
+    }
+
+    .profile__content-email {
+        font-size: .9rem;
+    }
+
+}

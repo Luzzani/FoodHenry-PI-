@@ -48,7 +48,7 @@ function RecipeDetail(props) {
           ></p>
           <ol className="detail__content-stepscontainer">
             {recipe.steps ? (
-              recipe.steps.map((e, i) => {
+              recipe.steps.map((e) => {
                 return (
                   <li className="detail__content-steps" key={e.number}>
                     <p>
@@ -58,7 +58,7 @@ function RecipeDetail(props) {
                       <h4>Ingredients: </h4>
                       {e.ingredients?.length ? (
                         e.ingredients.map((e) => {
-                          return <li>{e.name}</li>;
+                          return <li key={e.id}>{e.name}</li>;
                         })
                       ) : (
                         <li>No ingredients</li>
