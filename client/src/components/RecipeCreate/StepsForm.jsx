@@ -1,20 +1,15 @@
 import { useState } from "react";
 import "./RecipeCreate.css";
 
-function StepsForm({ setSteps }) {
+function StepsForm({ setSteps, setShowSteps, showSteps }) {
   const [stepObjet, setStepObject] = useState({
     step: "",
     ingredients: [],
     number: 1,
   });
+
   const [ingredient, setIngredient] = useState("");
   const [validateIngredient, setValidateIngredient] = useState(false);
-
-  console.log({
-    ingredient,
-    validateIngredient,
-    stepObjet,
-  });
 
   const stepHandler = (e, ingredient) => {
     if (e.target.name === "step") {
@@ -25,10 +20,11 @@ function StepsForm({ setSteps }) {
         };
       });
     } else {
-      if (ingredient.trim() === "") return;
+      if (ingredient.trim().length === 0) return;
+
       setStepObject((prevState) => {
-        console.log({ prevState });
         let auxList = [...prevState.ingredients];
+
         if (
           ingredient &&
           stepObjet.ingredients.find((e) => e.name === ingredient)
@@ -55,14 +51,28 @@ function StepsForm({ setSteps }) {
     }
   };
 
+  const cleanIngredientHandler = (name) => {
+    const updatedList = stepObjet.ingredients?.filter((e) => e.name !== name);
+
+    setStepObject((prevState) => {
+      return {
+        ...prevState,
+        ingredients: updatedList,
+      };
+    });
+  };
+
   const setStepsHandler = () => {
     setValidateIngredient(false);
+
     setStepObject((prevState) => {
       return { ...prevState, number: prevState.number + 1 };
     });
+
     setSteps((prevState) => {
       return [...prevState, { ...stepObjet }];
     });
+
     setStepObject((prevState) => {
       return {
         ...prevState,
@@ -71,6 +81,12 @@ function StepsForm({ setSteps }) {
       };
     });
   };
+
+  console.log({
+    step: stepObjet.step,
+    ingredients: stepObjet.ingredients,
+    number: stepObjet.number,
+  });
 
   return (
     <>
@@ -95,12 +111,14 @@ function StepsForm({ setSteps }) {
               Finished
             </button>
           </label>
-          <ul>
+          <ul className="form__steps-list">
             {stepObjet.ingredients?.map((e) => {
               return (
                 <li key={e.id}>
-                  {e.name}
-                  <button>X</button>
+                  {e.name}{' '}
+                  <button className="form__steps-button" onClick={() => cleanIngredientHandler(e.name)}>
+                    X
+                  </button>
                 </li>
               );
             })}
@@ -117,6 +135,12 @@ function StepsForm({ setSteps }) {
           />
           <button className="form__steps-button" onClick={addStepHandle}>
             Add Step
+          </button>
+          <button
+            className="form__steps-button"
+            onClick={() => setShowSteps((prevState) => !prevState)}
+          >
+            {!showSteps ? <>Show Steps</> : <>Hide Steps</>}
           </button>
         </label>
       )}

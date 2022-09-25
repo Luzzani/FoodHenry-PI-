@@ -20,9 +20,6 @@
      padding: .5rem;
      border: 1px solid transparent;
      border-radius: 7px;
- }
-
- .create__button:hover {
      cursor: pointer;
  }
 
@@ -97,6 +94,18 @@
      font-size: .9rem;
      font-weight: 200;
      text-transform: capitalize;
+ }
+
+ .form__steps-list {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 25%;
+     font-weight: bolder;
+     text-shadow: 0 0 7px black;
+ }
+
+ .form__steps-list>li>ul {
+     font-weight: lighter;
  }
 
 

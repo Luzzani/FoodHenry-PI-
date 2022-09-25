@@ -26,12 +26,7 @@
     font-size: 1.7rem;
 }
 
-.detail__content-link>button:hover {
-    background-color: transparent;
-    color: yellowgreen;
-    border: 1px solid black;
-    transition: all .4s ease-in;
-}
+
 
 .detail__content-title {
     text-align: center;

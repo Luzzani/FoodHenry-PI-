@@ -57,7 +57,6 @@ function rootReducer(state = initialState, action) {
 
         filteredByDiet = aux.concat(dbRecipesFiltered);
       }
-      console.log({ filteredByDiet });
       return {
         ...state,
         recipes: filteredByDiet,

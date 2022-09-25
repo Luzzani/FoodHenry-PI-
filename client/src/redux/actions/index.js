@@ -93,7 +93,6 @@ export function getDetail(id) {
   return async function (dispatch) {
     try {
       let json = await axios.get(`${axios.defaults.baseURL}/api/recipes/${id}`);
-      console.log(json.data);
       return dispatch({
         type: GET_RECIPE_DETAIL,
         payload: json.data,

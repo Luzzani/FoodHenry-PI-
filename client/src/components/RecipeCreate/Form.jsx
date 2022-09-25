@@ -14,6 +14,7 @@ function Form() {
   const [send, setSend] = useState(false);
   const [steps, setSteps] = useState([]);
   const [noMoreSteps, setNoMoreSteps] = useState(true);
+  const [showSteps, setShowSteps] = useState(false);
 
   const [input, setInput] = useState({
     name: "",
@@ -23,6 +24,8 @@ function Form() {
     healthScore: 0,
     dietTypes: [],
   });
+
+  console.log({ steps });
 
   useEffect(() => {
     dispatch(getDiets());
@@ -35,6 +38,7 @@ function Form() {
         [e.target.name]: e.target.value,
       };
     });
+
     if (send) {
       setErrors(validate(input));
     }
@@ -42,6 +46,7 @@ function Form() {
 
   const handleCheckbox = (e) => {
     let updatedList = [...input.dietTypes];
+
     e.target.checked
       ? (updatedList = [...input.dietTypes, e.target.value])
       : updatedList.splice(input.dietTypes.indexOf(e.target.value), 1);
@@ -62,14 +67,15 @@ function Form() {
     });
   };
 
+
   const handleSubmit = (e, steps) => {
     e.preventDefault();
 
     setErrors(validate(input));
 
     if (
-      input.name === "" ||
-      input.summary === "" ||
+      input.name.trim().length < 1 ||
+      input.summary.trim().length < 0 ||
       input.steps === "" ||
       input.dietTypes.length === 0 ||
       input.healthScore < 1 ||
@@ -79,7 +85,6 @@ function Form() {
     }
 
     dispatch(postRecipe({ ...input, steps: steps }));
-    console.log({ ...input, steps });
 
     alert("Recipe created successfully");
 
@@ -88,8 +93,40 @@ function Form() {
 
   return (
     <form className="form__container" onSubmit={(e) => handleSubmit(e, steps)}>
-      {noMoreSteps ? <StepsForm setSteps={setSteps} /> : <></>}
+      {noMoreSteps ? (
+        <StepsForm
+          setSteps={setSteps}
+          setShowSteps={setShowSteps}
+          showSteps={showSteps}
+        />
+      ) : (
+        <></>
+      )}
       {errors.steps && <span>{errors.steps}</span>}
+      {showSteps ? (
+        <ul className="form__steps-list">
+          {steps.length > 0 && steps.map((e) => {
+            return (
+              <li key={e.number + e.step}>
+                {/* <button
+                  className="form__steps-button"
+                >
+                  X
+                </button>{" "} */}
+                {e.step}
+                <ul>
+                  {e.ingredients?.map((el) => (
+                    <li key={el.id}>{el.name}</li>
+                  ))}
+                </ul>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <></>
+      )}
+
       <button
         className="form__steps-button"
         onClick={() => finishedStepHandle(steps)}

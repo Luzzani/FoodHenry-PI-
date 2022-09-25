@@ -1,12 +1,10 @@
-
-
 export const validate = (input) => {
   let errors = {};
 
-  if (input.name === "") {
+  if (input.name.trim().length < 1) {
     errors.name = `You must enter a name`;
   }
-  if (input.summary === "") {
+  if (input.summary.trim().length < 1) {
     errors.summary = `You must enter a summary`;
   }
   if (input.steps === "") {
@@ -21,3 +19,4 @@ export const validate = (input) => {
 
   return errors;
 };
+
