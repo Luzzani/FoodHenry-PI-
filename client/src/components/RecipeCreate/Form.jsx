@@ -61,12 +61,12 @@ function Form() {
 
   const finishedStepHandle = (steps) => {
     setNoMoreSteps((prevState) => !prevState);
+    setShowSteps(false);
     setInput({
       ...input,
       steps: steps,
     });
   };
-
 
   const handleSubmit = (e, steps) => {
     e.preventDefault();
@@ -105,23 +105,24 @@ function Form() {
       {errors.steps && <span>{errors.steps}</span>}
       {showSteps ? (
         <ul className="form__steps-list">
-          {steps.length > 0 && steps.map((e) => {
-            return (
-              <li key={e.number + e.step}>
-                {/* <button
+          {steps.length > 0 &&
+            steps.map((e) => {
+              return (
+                <li key={e.number + e.step}>
+                  {/* <button
                   className="form__steps-button"
                 >
                   X
                 </button>{" "} */}
-                {e.step}
-                <ul>
-                  {e.ingredients?.map((el) => (
-                    <li key={el.id}>{el.name}</li>
-                  ))}
-                </ul>
-              </li>
-            );
-          })}
+                  {e.step}
+                  <ul>
+                    {e.ingredients?.map((el) => (
+                      <li key={el.id}>{el.name}</li>
+                    ))}
+                  </ul>
+                </li>
+              );
+            })}
         </ul>
       ) : (
         <></>
