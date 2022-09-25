@@ -23,7 +23,7 @@ function RecipeDetail(props) {
   return (
     <div className="detail__container">
       {!recipe.name ? (
-        <LoadingSpinner />
+        <LoadingSpinner className='detail__spinner'/>
       ) : (
         <div className="detail__content">
           <Link to={"/home"} className="detail__content-link">

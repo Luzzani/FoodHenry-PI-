@@ -4,6 +4,7 @@ import { postRecipe, getDiets } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { validate } from "../../utils/utilsFunctions";
 import "./RecipeCreate.css";
+import StepsForm from "./StepsForm";
 
 function Form() {
   const dispatch = useDispatch();
@@ -11,6 +12,8 @@ function Form() {
   const dietList = useSelector((state) => state.dietList);
   const [errors, setErrors] = useState("");
   const [send, setSend] = useState(false);
+  const [steps, setSteps] = useState([]);
+  const [noMoreSteps, setNoMoreSteps] = useState(true);
 
   const [input, setInput] = useState({
     name: "",
@@ -39,7 +42,6 @@ function Form() {
 
   const handleCheckbox = (e) => {
     let updatedList = [...input.dietTypes];
-
     e.target.checked
       ? (updatedList = [...input.dietTypes, e.target.value])
       : updatedList.splice(input.dietTypes.indexOf(e.target.value), 1);
@@ -52,7 +54,15 @@ function Form() {
     if (send) setErrors(validate(input));
   };
 
-  const handleSubmit = (e) => {
+  const finishedStepHandle = (steps) => {
+    setNoMoreSteps((prevState) => !prevState);
+    setInput({
+      ...input,
+      steps: steps,
+    });
+  };
+
+  const handleSubmit = (e, steps) => {
     e.preventDefault();
 
     setErrors(validate(input));
@@ -68,12 +78,8 @@ function Form() {
       return setSend(true);
     }
 
-    let stepByStep = input.steps.split(",");
-    let steps = stepByStep.map((e, i) => {
-      return { number: i + 1, step: e };
-    });
-
     dispatch(postRecipe({ ...input, steps: steps }));
+    console.log({ ...input, steps });
 
     alert("Recipe created successfully");
 
@@ -81,7 +87,15 @@ function Form() {
   };
 
   return (
-    <form className="form__container" onSubmit={(e) => handleSubmit(e)}>
+    <form className="form__container" onSubmit={(e) => handleSubmit(e, steps)}>
+      {noMoreSteps ? <StepsForm setSteps={setSteps} /> : <></>}
+      {errors.steps && <span>{errors.steps}</span>}
+      <button
+        className="form__steps-button"
+        onClick={() => finishedStepHandle(steps)}
+      >
+        No more steps
+      </button>
       <label htmlFor="steps">
         Recipe name:
         <input
@@ -113,17 +127,6 @@ function Form() {
           onChange={(e) => handleChange(e)}
         />
       </label>
-      <label htmlFor="steps">
-        Steps must be separated by a comma ','
-        <input
-          id="steps"
-          placeholder="recipe steps"
-          name="steps"
-          value={input.steps}
-          onChange={(e) => handleChange(e)}
-        />
-      </label>
-      {errors.steps && <span>{errors.steps}</span>}
       <label>
         Diet types:
         <div className="form__diet-types">
@@ -151,7 +154,7 @@ function Form() {
         />
       </label>
       {errors.summary && <span>{errors.summary}</span>}
-      <button className="create__button" type="submit">
+      <button className="form__steps-button" type="submit">
         Send
       </button>
     </form>

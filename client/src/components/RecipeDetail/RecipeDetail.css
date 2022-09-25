@@ -1,8 +1,6 @@
 .detail__container {
     width: 100vw;
-    /* background: fixed url('https://img.freepik.com/foto-gratis/concepto-banner-supermercado-ingredientes_23-2149421146.jpg?w=1800&t=st=1663982803~exp=1663983403~hmac=3d7138262a78280a5600e787ddc2d47e1fa858147e2e504ccf7517d5d8ecfcc6') no-repeat center; */
     background: fixed url('https://img.freepik.com/foto-gratis/bolsa-hilo-verduras-frutas-sobre-fondo-bicolor_185193-84598.jpg?w=740&t=st=1663982540~exp=1663983140~hmac=8e0b45eddf7e9097dffc6cb10edb00f691790f4cd88c869eab5a1ab8b8599919') no-repeat right;
-
     background-size: contain;
     color: aliceblue;
     text-shadow: 0 0 7px #000;
@@ -103,6 +101,12 @@
     background-color: rgba(85, 29, 174, 0.783);
     font-size: 1.7rem;
     margin: 0 0 .5rem 0;
+}
+
+.detail__spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
 }
 
 

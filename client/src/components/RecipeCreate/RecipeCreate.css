@@ -1,5 +1,5 @@
  .create__container {
-     background: fixed url(../../assets/image/tasty-fresh-appetizing-italian-food-ingredients-on-dark-background-ready-to-cook-home-italian-healthy-food-cooking-concept-toning.jpg) bottom;
+     background: fixed url(../../assets/image/old-spoon-on-dark-table.jpg) 85%;
      background-size: cover;
      height: 100vh;
      padding: 1rem;
@@ -17,12 +17,23 @@
  .create__button {
      display: block;
      margin: 0 auto;
+     padding: .5rem;
      border: 1px solid transparent;
      border-radius: 7px;
  }
 
  .create__button:hover {
      cursor: pointer;
+ }
+
+ .form__steps-button {
+     border: 1px solid transparent;
+     border-radius: 7px;
+     box-shadow: 0 0 7px 0 black;
+     background-color: rgba(96, 68, 28);
+     color: aliceblue;
+     cursor: pointer;
+     padding: .2rem;
  }
 
  /* /-----------------------------create denied--------------------------/ */
@@ -103,7 +114,9 @@
      margin: 0 auto;
      display: block;
      height: 74px;
+     border-radius: 10px;
  }
+
 
  /* ------------- MEDIA QUERIES (MEDIUM DEVICES) ------------- */
 
