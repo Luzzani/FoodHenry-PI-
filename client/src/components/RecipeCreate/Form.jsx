@@ -96,9 +96,10 @@ function Form() {
       >
         No more steps
       </button>
-      <label htmlFor="steps">
+      <label htmlFor="name">
         Recipe name:
         <input
+          id="name"
           placeholder="name"
           name="name"
           value={input.name}
@@ -117,9 +118,10 @@ function Form() {
         />
       </label>
       {errors.healthScore && <span>{errors.healthScore}</span>}
-      <label htmlFor="steps">
+      <label htmlFor="image">
         Url image:
         <input
+          id="image"
           type="text"
           name="image"
           placeholder="image url"
@@ -145,14 +147,14 @@ function Form() {
           })}
           {errors.dietTypes && <span>{errors.dietTypes}</span>}
         </div>
-        <textarea
-          className="form__summary"
-          placeholder="summary"
-          name="summary"
-          value={input.summary}
-          onChange={(e) => handleChange(e)}
-        />
       </label>
+      <textarea
+        className="form__summary"
+        placeholder="summary"
+        name="summary"
+        value={input.summary}
+        onChange={(e) => handleChange(e)}
+      />
       {errors.summary && <span>{errors.summary}</span>}
       <button className="form__steps-button" type="submit">
         Send
