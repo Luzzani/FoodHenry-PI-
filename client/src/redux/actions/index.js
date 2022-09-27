@@ -9,7 +9,8 @@ import {
   GET_LIST_DIETS,
   FILTER_DIETS,
   BACK_PAGE,
-  RETURN_PAGE
+  RETURN_PAGE,
+  DELETE_RECIPE,
 } from "./actionsConst";
 
 export function getRecipes() {
@@ -111,5 +112,18 @@ export function setPageNumPrev(prevNum) {
   return {
     type: RETURN_PAGE,
     payload: prevNum,
+  };
+}
+
+export function deleteRecipe(id) {
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(
+        `${axios.defaults.baseURL}/api/recipes/${id}`
+      );
+      dispatch({ type: DELETE_RECIPE, payload: response.data });
+    } catch (error) {
+      console.log(error);
+    }
   };
 }

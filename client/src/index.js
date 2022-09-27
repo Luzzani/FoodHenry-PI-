@@ -12,12 +12,9 @@ dotenv.config();
 
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
 
-const domain = process.env.REACT_APP_DOMAIN;
-const clientId =
-  process.env.REACT_APP_CLIENT_ID;
-// const domain = process.env.REACT_APP_DOMAIN || "dev-mpyent2r.us.auth0.com";
-// const clientId =
-//   process.env.REACT_APP_CLIENT_ID || "kjdUz4W0Lj0QIucMR8Fij1DLQxjGOTJ9";
+ const domain = process.env.REACT_APP_DOMAIN;
+ const clientId =
+   process.env.REACT_APP_CLIENT_ID;
 
 ReactDOM.render(
   <React.StrictMode>

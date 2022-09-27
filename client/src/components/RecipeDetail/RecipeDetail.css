@@ -151,11 +151,6 @@
 /* ------------- MEDIA QUERIES (SMALL DEVICES) ------------- */
 
 @media screen and (max-width: 750px) {
-    /* .detail__container {
-        background: fixed url(../../assets/image/old-spoon-on-dark-table.jpg) 20%;
-        background-size: cover;
-    } 
-    */
 
     .detail__content {
         width: auto;

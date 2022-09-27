@@ -1,8 +1,16 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getDetail, cleanPag } from "../../redux/actions";
+import {
+  getDetail,
+  cleanPag,
+  deleteRecipe,
+  setPageNumPrev,
+  getRecipes,
+} from "../../redux/actions";
 import { Link } from "react-router-dom";
 import LoadingSpinner from "../LoadingSpinner";
+import { useAuth0 } from "@auth0/auth0-react";
+
 import "./RecipeDetail.css";
 import "../Home/Home.css";
 
@@ -10,6 +18,7 @@ function RecipeDetail(props) {
   const dispatch = useDispatch();
   const recipe = useSelector((state) => state.recipeDetail);
   const id = props.match.params.id;
+  const { isAuthenticated } = useAuth0();
 
   useEffect(() => {
     dispatch(getDetail(id));
@@ -18,12 +27,32 @@ function RecipeDetail(props) {
     };
   }, [dispatch, id]);
 
+  const deleteHandle = (id) => {
+    dispatch(deleteRecipe(id));
+    dispatch(setPageNumPrev(1));
+    dispatch(getRecipes());
+  };
+
   return (
     <div className="detail__container">
       {!recipe.name ? (
         <LoadingSpinner className="detail__spinner" />
       ) : (
         <div className="detail__content">
+          {isAuthenticated && id.length > 10 ? (
+            <Link to={"/home"} className="detail__content-link">
+              <button
+                className="filter__button"
+                onClick={() => {
+                  deleteHandle(id);
+                }}
+              >
+                Delete
+              </button>
+            </Link>
+          ) : (
+            <></>
+          )}
           <Link to={"/home"} className="detail__content-link">
             <button
               className="filter__button"

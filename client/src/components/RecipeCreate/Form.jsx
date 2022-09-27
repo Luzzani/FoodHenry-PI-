@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { postRecipe, getDiets } from "../../redux/actions";
+import {
+  postRecipe,
+  getDiets,
+  setPageNumPrev,
+  getRecipes,
+} from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { validate } from "../../utils/utilsFunctions";
 import "./RecipeCreate.css";
@@ -25,10 +30,11 @@ function Form() {
     dietTypes: [],
   });
 
-  console.log({ steps });
-
   useEffect(() => {
     dispatch(getDiets());
+    return () => {
+      dispatch(getRecipes());
+    };
   }, [dispatch]);
 
   const handleChange = (e) => {
@@ -83,12 +89,12 @@ function Form() {
     ) {
       return setSend(true);
     }
-
+    dispatch(setPageNumPrev(1));
     dispatch(postRecipe({ ...input, steps: steps }));
 
     alert("Recipe created successfully");
 
-    history.push("/home");
+    history.push("/");
   };
 
   return (
@@ -109,11 +115,6 @@ function Form() {
             steps.map((e) => {
               return (
                 <li key={e.number + e.step}>
-                  {/* <button
-                  className="form__steps-button"
-                >
-                  X
-                </button>{" "} */}
                   {e.step}
                   <ul>
                     {e.ingredients?.map((el) => (
