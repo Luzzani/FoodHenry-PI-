@@ -103,7 +103,7 @@ export function getDetail(id) {
   };
 }
 
-export function cleanPag(value) {
+export function cleanPag() {
   return { type: BACK_PAGE, payload: {} };
 }
 

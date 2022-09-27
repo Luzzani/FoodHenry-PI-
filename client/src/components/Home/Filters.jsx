@@ -25,7 +25,7 @@ function Filters(props) {
 
   const filterAlphabeticalHandler = () => {
     dispatch(filterAlphabetically(alphabetical));
-    setCurrentPage(1);
+    // setCurrentPage(1);
     dispatch(setPageNumPrev(1));
     setAlphabetical((prevState) => !prevState);
   };
@@ -33,7 +33,7 @@ function Filters(props) {
   const filterHealthScore = () => {
     dispatch(filterScore(healthScore));
     dispatch(setPageNumPrev(1));
-    setCurrentPage(1);
+    // setCurrentPage(1);
     setHealthScore((prevState) => !prevState);
   };
 
