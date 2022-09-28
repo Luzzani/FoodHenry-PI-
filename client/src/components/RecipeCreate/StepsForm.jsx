@@ -83,12 +83,6 @@ function StepsForm({ setSteps, setShowSteps, showSteps }) {
     });
   };
 
-  console.log({
-    step: stepObjet.step,
-    ingredients: stepObjet.ingredients,
-    number: stepObjet.number,
-  });
-
   return (
     <>
       {validateIngredient ? (
