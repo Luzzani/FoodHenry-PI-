@@ -6,15 +6,18 @@
     overflow: hidden;
 }
 
+.home__container-buttons {
+    height: 10vh;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+}
+
 .home__button-back {
     border: 1px solid transparent;
     font-size: 1.3rem;
     padding: .4rem;
-    display: inline-block;
-    position: relative;
     left: 45%;
-    margin-top: 1rem;
-    cursor: pointer;
     box-shadow: 0 0 5px 0 #fff;
 }
 

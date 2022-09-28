@@ -26,8 +26,9 @@ function StepsForm({ setSteps, setShowSteps, showSteps }) {
         let auxList = [...prevState.ingredients];
 
         if (
-          ingredient &&
-          stepObjet.ingredients.find((e) => e.name === ingredient)
+          stepObjet.ingredients?.find(
+            (e) => e.name.toLowerCase() === ingredient.toLowerCase()
+          )
         ) {
           setIngredient("");
           return { ...prevState };
@@ -115,8 +116,11 @@ function StepsForm({ setSteps, setShowSteps, showSteps }) {
             {stepObjet.ingredients?.map((e) => {
               return (
                 <li key={e.id}>
-                  {e.name}{' '}
-                  <button className="form__steps-button" onClick={() => cleanIngredientHandler(e.name)}>
+                  {e.name}{" "}
+                  <button
+                    className="form__steps-button"
+                    onClick={() => cleanIngredientHandler(e.name)}
+                  >
                     X
                   </button>
                 </li>

@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import {
   postRecipe,
   getDiets,
   setPageNumPrev,
   getRecipes,
 } from "../../redux/actions";
-import { useDispatch, useSelector } from "react-redux";
-import { validate } from "../../utils/utilsFunctions";
+
 import "./RecipeCreate.css";
 import StepsForm from "./StepsForm";
+
+import { validate } from "../../utils/utilsFunctions";
 
 function Form() {
   const dispatch = useDispatch();
@@ -21,7 +23,7 @@ function Form() {
   const [noMoreSteps, setNoMoreSteps] = useState(true);
   const [showSteps, setShowSteps] = useState(false);
 
-  const [input, setInput] = useState({
+  const [newRecipe, setNewRecipe] = useState({
     name: "",
     summary: "",
     steps: "",
@@ -32,13 +34,14 @@ function Form() {
 
   useEffect(() => {
     dispatch(getDiets());
+
     return () => {
       dispatch(getRecipes());
     };
   }, [dispatch]);
 
   const handleChange = (e) => {
-    setInput((prevState) => {
+    setNewRecipe((prevState) => {
       return {
         ...prevState,
         [e.target.name]: e.target.value,
@@ -46,51 +49,52 @@ function Form() {
     });
 
     if (send) {
-      setErrors(validate(input));
+      setErrors(validate(newRecipe));
     }
   };
 
   const handleCheckbox = (e) => {
-    let updatedList = [...input.dietTypes];
+    let updatedList = [...newRecipe.dietTypes];
 
     e.target.checked
-      ? (updatedList = [...input.dietTypes, e.target.value])
-      : updatedList.splice(input.dietTypes.indexOf(e.target.value), 1);
+      ? (updatedList = [...newRecipe.dietTypes, e.target.value])
+      : updatedList.splice(newRecipe.dietTypes.indexOf(e.target.value), 1);
 
-    setInput({
-      ...input,
+    setNewRecipe({
+      ...newRecipe,
       dietTypes: updatedList,
     });
 
-    if (send) setErrors(validate(input));
+    if (send) setErrors(validate(newRecipe));
   };
 
-  const finishedStepHandle = (steps) => {
-    setNoMoreSteps((prevState) => !prevState);
-    setShowSteps(false);
-    setInput({
-      ...input,
+  const finishedStepHandle = (e, steps) => {
+    e.preventDefault();
+    setNewRecipe({
+      ...newRecipe,
       steps: steps,
     });
+    setNoMoreSteps((prevState) => !prevState);
+    setShowSteps(false);
   };
 
   const handleSubmit = (e, steps) => {
     e.preventDefault();
 
-    setErrors(validate(input));
+    setErrors(validate(newRecipe));
 
     if (
-      input.name.trim().length < 1 ||
-      input.summary.trim().length < 0 ||
-      input.steps === "" ||
-      input.dietTypes.length === 0 ||
-      input.healthScore < 1 ||
-      input.healthScore > 100
+      newRecipe.name.trim().length < 1 ||
+      newRecipe.summary.trim().length < 0 ||
+      newRecipe.steps === "" ||
+      newRecipe.dietTypes.length === 0 ||
+      newRecipe.healthScore < 1 ||
+      newRecipe.healthScore > 100
     ) {
       return setSend(true);
     }
     dispatch(setPageNumPrev(1));
-    dispatch(postRecipe({ ...input, steps: steps }));
+    dispatch(postRecipe({ ...newRecipe, steps: steps }));
 
     alert("Recipe created successfully");
 
@@ -99,6 +103,39 @@ function Form() {
 
   return (
     <form className="form__container" onSubmit={(e) => handleSubmit(e, steps)}>
+      <label htmlFor="name">
+        Recipe name:
+        <input
+          id="name"
+          placeholder="name"
+          name="name"
+          value={newRecipe.name}
+          onChange={(e) => handleChange(e)}
+        />
+      </label>
+      {errors.name && <span>{errors.name}</span>}
+      <label htmlFor="number">
+        Healt Score:
+        <input
+          id="number"
+          type="number"
+          name="healthScore"
+          value={newRecipe.healthScore}
+          onChange={(e) => handleChange(e)}
+        />
+      </label>
+      {errors.healthScore && <span>{errors.healthScore}</span>}
+      <label htmlFor="image">
+        Url image:
+        <input
+          id="image"
+          type="text"
+          name="image"
+          placeholder="image url"
+          value={newRecipe.image}
+          onChange={(e) => handleChange(e)}
+        />
+      </label>
       {noMoreSteps ? (
         <StepsForm
           setSteps={setSteps}
@@ -131,43 +168,10 @@ function Form() {
 
       <button
         className="form__steps-button"
-        onClick={() => finishedStepHandle(steps)}
+        onClick={(e) => finishedStepHandle(e, steps)}
       >
         No more steps
       </button>
-      <label htmlFor="name">
-        Recipe name:
-        <input
-          id="name"
-          placeholder="name"
-          name="name"
-          value={input.name}
-          onChange={(e) => handleChange(e)}
-        />
-      </label>
-      {errors.name && <span>{errors.name}</span>}
-      <label htmlFor="number">
-        Healt Score:
-        <input
-          id="number"
-          type="number"
-          name="healthScore"
-          value={input.healthScore}
-          onChange={(e) => handleChange(e)}
-        />
-      </label>
-      {errors.healthScore && <span>{errors.healthScore}</span>}
-      <label htmlFor="image">
-        Url image:
-        <input
-          id="image"
-          type="text"
-          name="image"
-          placeholder="image url"
-          value={input.image}
-          onChange={(e) => handleChange(e)}
-        />
-      </label>
       <label>
         Diet types:
         <div className="form__diet-types">
@@ -181,6 +185,7 @@ function Form() {
                   value={e.name}
                   onChange={(e) => handleCheckbox(e)}
                 />
+                <span className="check"></span>
               </label>
             );
           })}
@@ -191,7 +196,7 @@ function Form() {
         className="form__summary"
         placeholder="summary"
         name="summary"
-        value={input.summary}
+        value={newRecipe.summary}
         onChange={(e) => handleChange(e)}
       />
       {errors.summary && <span>{errors.summary}</span>}

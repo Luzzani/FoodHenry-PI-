@@ -1,19 +1,24 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getRecipes, setPageNumPrev } from "../../redux/actions";
+
 import Card from "./Card";
 import "./Home.css";
 import LoadingSpinner from "../LoadingSpinner";
 import Paginated from "./Paginated";
 import Filters from "./Filters";
 
+import { useAuth0 } from "@auth0/auth0-react";
+import LogoutButton from "../Logbuttons/LogoutButton";
+import LoginButton from "../Logbuttons/LoginButton";
+
 function Home() {
   const dispatch = useDispatch();
   const history = useHistory();
   const recipes = useSelector((state) => state.recipes);
   const prevPage = useSelector((state) => state.prevPage);
+  const { isAuthenticated } = useAuth0();
 
   // estado para controlar el ordenamiento, creado en este componente para conseguir que se renderice correctamente
   const [alphabetical, setAlphabetical] = useState(true);
@@ -44,11 +49,21 @@ function Home() {
 
   return (
     <section className="home__container">
-      <Link to={"/"}>
-        <button className="home__button-back filter__button">
-          Return to the principal Page
-        </button>
-      </Link>
+      <div className="home__container-buttons">
+        <Link to={"/"}>
+          <button className="home__button-back filter__button">
+            Return to the principal Page
+          </button>
+        </Link>
+        {!isAuthenticated ? (
+          <LoginButton
+            className={"home__button-back filter__button"}
+            content={"Login"}
+          />
+        ) : (
+          <LogoutButton className={"home__button-back filter__button"} />
+        )}
+      </div>
       <div>
         <Filters
           setCurrentPage={setCurrentPage}

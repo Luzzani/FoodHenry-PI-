@@ -25,6 +25,7 @@ export function getRecipes() {
       });
   };
 }
+
 export function getDiets() {
   return (dispatch) => {
     axios
