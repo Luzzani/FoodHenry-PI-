@@ -26,7 +26,7 @@ function SearchBar({ setCurrentPage }) {
         }}
       />
       <button
-        className="filter__button search__button"
+        className="filter__button card__hover-effect"
         onClick={() => searchHandler()}
       >
         Search

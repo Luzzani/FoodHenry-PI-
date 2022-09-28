@@ -14,7 +14,7 @@
 
 .profile__denied>h2 {
     color: crimson;
-    font-size: 2rem;
+    font-size: var(--font-size-h2);
 }
 
 /* ----------------------------- allowed ------------------------------------ */
@@ -50,13 +50,13 @@
 .profile__content-top .profile__content-nickname {
     border: 1px solid transparent;
     border-radius: 10px;
-    box-shadow: 0 0 7px 0 black;
+    box-shadow: var(--box-shadow);
     padding: .2rem;
 }
 
 .profile__content-top .profile__content-image {
     border-radius: 10px;
-    box-shadow: 0 0 7px 0 black;
+    box-shadow: var(--box-shadow);
     width: 150px;
 }
 
@@ -67,7 +67,7 @@
     /* ----------------------------- denied ------------------------------------ */
 
     .profile__denied>h2 {
-        font-size: 1.5rem;
+        font-size: var(--font-size-h2-sm);
     }
 
     /* ----------------------------- allowed ------------------------------------ */
@@ -90,7 +90,7 @@
     }
 
     .profile__content-title {
-        font-size: 1.2rem;
+        font-size: var(--font-size-h2-sm);
     }
 
     .profile__content-email {

@@ -4,7 +4,7 @@ import './Home.css'
 
 function Card({ name, healthScore, image, id }) {
   return (
-    <div className="card__content">
+    <div className="card__content card__hover-effect">
       <Link to={`/detail/${id}`}>
         <h3 className="card__title">{name}</h3>
       </Link>

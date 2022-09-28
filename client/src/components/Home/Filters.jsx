@@ -41,7 +41,8 @@ function Filters(props) {
     <div className="filter__contianer">
       {isAuthenticated ? (
         <Link to={"/createRecipe"}>
-          <button className="filter__button">Create Recipe</button>
+
+          <button className="filter__button card__hover-effect">Create Recipe</button>
         </Link>
       ) : (
         <></>
@@ -52,14 +53,16 @@ function Filters(props) {
         <div>
           {alphabetical ? (
             <button
-              className="filter__button"
+
+              className="filter__button card__hover-effect"
               onClick={filterAlphabeticalHandler}
             >
               From A to Z
             </button>
           ) : (
             <button
-              className="filter__button"
+
+              className="filter__button card__hover-effect"
               onClick={filterAlphabeticalHandler}
             >
               From Z to A
@@ -68,11 +71,13 @@ function Filters(props) {
         </div>
         <div>
           {healthScore ? (
-            <button className="filter__button" onClick={filterHealthScore}>
+
+            <button className="filter__button card__hover-effect" onClick={filterHealthScore}>
               Highest health score
             </button>
           ) : (
-            <button className="filter__button" onClick={filterHealthScore}>
+
+            <button className="filter__button card__hover-effect" onClick={filterHealthScore}>
               Lowest health score
             </button>
           )}

@@ -16,7 +16,7 @@ function RecipeCreate() {
       {isAuthenticated ? (
         <>
           <Link to={"/home"}>
-            <button className="create__button">Back to home</button>
+            <button className="create__button create__button-back">Back to home</button>
           </Link>
           <h2 className="create__title">Create your own recipe</h2>
           <Form />
@@ -24,7 +24,7 @@ function RecipeCreate() {
       ) : (
         <>
           <Link to={"/home"}>
-            <button className="create__button">Back to home</button>
+            <button className="create__button ">Back to home</button>
           </Link>
           {isLoading ? <LoadingSpinner /> : <></>}
           <h2 className="create__denied">

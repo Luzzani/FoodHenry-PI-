@@ -31,6 +31,8 @@ function RecipeDetail(props) {
     dispatch(deleteRecipe(id));
     dispatch(setPageNumPrev(1));
     dispatch(getRecipes());
+
+    alert("recipe detele successfully");
   };
 
   return (

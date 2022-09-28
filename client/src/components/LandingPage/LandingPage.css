@@ -7,11 +7,12 @@
   background-size: cover;
   text-align: center;
   color: aliceblue;
-  text-shadow: 0 7px 7px black;
+  text-shadow: var(--text-shadow);
 }
 
 .landing__container>h1 {
   font-size: 3rem;
+  font-size: var(--font-size-h1);
   margin: 0;
 }
 
@@ -26,7 +27,7 @@
 }
 
 .landing__content-title {
-  font-size: 3.5rem;
+  font-size: var(--font-size-h2);
 }
 
 .landing__content-text {
@@ -37,18 +38,19 @@
   width: 75%;
   text-align: center;
   margin: 0 auto;
-  font-size: 1.6rem;
+  font-size: var(--font-size-p);
   line-height: 1.6rem;
 }
 
 
 .landing__content-button {
   font-weight: bolder;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   border: 1px solid transparent;
   border-radius: 7px;
-  box-shadow: 0 0 7px 0 white;
+  box-shadow: 0 0 5px 0 white;
   padding: .4rem;
+  cursor: pointer;
 }
 
 .landing__button {
@@ -58,9 +60,9 @@
 }
 
 .landing__content-button:hover {
-  scale: 1.2;
-  transition: 1s;
-  cursor: pointer;
+  border: 1px solid black;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--color-white);
 }
 
 .landgin__profile-btn {
@@ -71,8 +73,13 @@
 
 @media screen and (max-width: 1024px) {
 
+
+  .landing__container>h1 {
+    font-size: var(--font-size-h1-md);
+  }
+
   .landing__content-title {
-    font-size: 4rem;
+    font-size: var(--font-size-h2-md);
   }
 
   .landing__button {
@@ -85,8 +92,8 @@
   }
 
   .landing__content-text .landing__text {
-    font-size: 2rem;
-    line-height: 1.9rem;
+    font-size: var(--font-size-p);
+    line-height: 1.7rem;
     width: 130%;
   }
 }
@@ -94,10 +101,15 @@
 /* ------------- MEDIA QUERIES (SMALL DEVICES) ------------- */
 
 @media screen and (max-width: 600px) {
-  
-  .landing__content-title {
-    font-size: 2rem;
+
+  .landing__container>h1 {
+    font-size: var(--font-size-h1-sm);
   }
+
+  .landing__content-title {
+    font-size: var(--font-size-h2-sm);
+  }
+
   .landing__container {
     width: 100vw;
     height: 100vh;
@@ -105,7 +117,7 @@
     background: fixed url('../../assets/image/frying-pan-empty-with-various-spices-in-black-table.jpg') 40% 29% no-repeat;
     text-align: center;
     color: aliceblue;
-    text-shadow: 0 7px 7px black;
+    text-shadow: var(--text-shadow);
   }
 
   .landing__content {
@@ -115,10 +127,11 @@
 
   .landing__content-text {
     width: 100vw;
-    text-shadow: 0 7px 7px black;
+    font-size: 1.2rem;
+    text-shadow: var(--text-shadow);
   }
-  
-  .landing__content-text > h2 { 
+
+  .landing__content-text>h2 {
     position: relative;
     left: 2rem;
   }
@@ -141,20 +154,3 @@
 
 
 }
-
-
-
-/* .landing__button {
-  font-weight: 900;
-  text-shadow: 0 0 2px aliceblue;
-  background-color: transparent;
-  box-shadow: 0 0 0 0 transparent;
-  filter: drop-shadow(0px 0px 9px #fff);
-  background-image: url('../../assets/image/fried-eggs-top-view-removebg-preview.png');
-  background-position: 50%;
-  width: 300px;
-  height: 300px;
-  position: relative;
-  left: 7.5rem;
-  top: 2.5rem;
-} */
