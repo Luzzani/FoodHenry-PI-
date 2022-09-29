@@ -60,14 +60,14 @@ function rootReducer(state = initialState, action) {
       };
 
     case ORDER_RECIPE:
-      const filteredRecipes = state.recipes.sort((a, b) => {
+      const filteredRecipes = state.allRecipes.sort((a, b) => {
         if (action.payload) {
-          if (a.name < b.name) return -1;
-          if (b.name < a.name) return 1;
+          if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+          if (b.name.toLowerCase() < a.name.toLowerCase()) return 1;
           return 0;
         } else {
-          if (b.name < a.name) return -1;
-          if (a.name < b.name) return 1;
+          if (b.name.toLowerCase() < a.name.toLowerCase()) return -1;
+          if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
           return 0;
         }
       });

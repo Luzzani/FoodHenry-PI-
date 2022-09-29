@@ -8,11 +8,13 @@ import {
   getRecipes,
 } from "../../redux/actions";
 import { Link } from "react-router-dom";
-import LoadingSpinner from "../LoadingSpinner";
 import { useAuth0 } from "@auth0/auth0-react";
 
 import "./RecipeDetail.css";
 import "../Home/Home.css";
+
+import LoadingSpinner from "../LoadingSpinner";
+import NotFound from "../NotFound";
 
 function RecipeDetail(props) {
   const dispatch = useDispatch();
@@ -27,6 +29,8 @@ function RecipeDetail(props) {
     };
   }, [dispatch, id]);
 
+  console.log({ recipe });
+
   const deleteHandle = (id) => {
     dispatch(deleteRecipe(id));
     dispatch(setPageNumPrev(1));
@@ -36,73 +40,100 @@ function RecipeDetail(props) {
   };
 
   return (
-    <div className="detail__container">
+    <div className={recipe.name === "Recipe not found" ? "" : "detail__container"}>
       {!recipe.name ? (
         <LoadingSpinner className="detail__spinner" />
       ) : (
-        <div className="detail__content">
-          {isAuthenticated && id.length > 10 ? (
-            <Link to={"/home"} className="detail__content-link">
-              <button
-                className="filter__button"
-                onClick={() => {
-                  deleteHandle(id);
-                }}
-              >
-                Delete
-              </button>
-            </Link>
+        <div
+          className={
+            recipe.name === "Recipe not found" ? "" : "detail__content"
+          }
+        >
+          {recipe.name === "Recipe not found" ? (
+            <NotFound />
           ) : (
-            <></>
-          )}
-          <Link to={"/home"} className="detail__content-link">
-            <button
-              className="filter__button"
-              onClick={() => {
-                props.history.goBack();
-              }}
-            >
-              Back
-            </button>
-          </Link>
-          <h1 className="detail__content-title">{recipe.name}</h1>
-          <img
-            className="detail__content-image"
-            src={recipe.image}
-            alt={recipe.name}
-          />
-          <p
-            className="detail__content-summary"
-            dangerouslySetInnerHTML={{ __html: recipe.summary }}
-          ></p>
-          <ol className="detail__content-stepscontainer">
-            {recipe.steps ? (
-              recipe.steps.map((e) => {
-                return (
-                  <li
-                    className="detail__content-steps"
-                    key={Math.random() + e.number}
+            <>
+              {isAuthenticated && id.length > 10 ? (
+                <Link to={"/home"} className="detail__content-link">
+                  <button
+                    className="filter__button"
+                    onClick={() => {
+                      deleteHandle(id);
+                    }}
                   >
-                    <p>
-                      <span>Step number {e.number}:</span> <br /> {e.step}
-                    </p>
-                    <ul>
-                      <h4>Ingredients: </h4>
-                      {e.ingredients?.length ? (
-                        e.ingredients.map((e) => {
-                          return <li key={e.id + Math.random()}>{e.name}</li>;
-                        })
-                      ) : (
-                        <li>No ingredients</li>
-                      )}
-                    </ul>
-                  </li>
-                );
-              })
-            ) : (
-              <p>This recipe does not have step by step</p>
-            )}
-          </ol>
+                    Delete
+                  </button>
+                </Link>
+              ) : (
+                <></>
+              )}
+              <Link to={"/home"} className="detail__content-link">
+                <button
+                  className="filter__button"
+                  onClick={() => {
+                    props.history.goBack();
+                  }}
+                >
+                  Back
+                </button>
+              </Link>
+              <h1 className="detail__content-title">{recipe.name}</h1>
+              {typeof recipe.diets[0] === "object" ? (
+                <span className="detail__content-diet">
+                  Diet Types:{" "}
+                  {recipe.diets?.map((e) => {
+                    return e.name + ", ";
+                  })}
+                </span>
+              ) : (
+                <span className="detail__content-diet">
+                  Diet Types:{" "}
+                  {recipe.diets?.map((e) => {
+                    return e + ", ";
+                  })}
+                </span>
+              )}
+              <img
+                className="detail__content-image"
+                src={recipe.image}
+                alt={recipe.name}
+              />
+              <p
+                className="detail__content-summary"
+                dangerouslySetInnerHTML={{ __html: recipe.summary }}
+              ></p>
+              <ol className="detail__content-stepscontainer">
+                {recipe.steps ? (
+                  recipe.steps.map((e) => {
+                    return (
+                      <li
+                        className="detail__content-steps"
+                        key={Math.random() + e.number}
+                      >
+                        <p>
+                          <span>Step number {e.number}:</span> <br /> {e.step}
+                        </p>
+                        <ul>
+                          <h4>Ingredients: </h4>
+                          {e.ingredients?.length ? (
+                            e.ingredients.map((e) => {
+                              return (
+                                <li key={e.id + Math.random()}>{e.name}</li>
+                              );
+                            })
+                          ) : (
+                            <li>No ingredients</li>
+                          )}
+                        </ul>
+                      </li>
+                    );
+                  })
+                ) : (
+                  <p>This recipe does not have step by step</p>
+                )}
+              </ol>
+            </>
+          )}
         </div>
       )}
     </div>

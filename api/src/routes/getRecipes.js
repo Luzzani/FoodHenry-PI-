@@ -40,8 +40,7 @@ router.get("/:idRecipe", async (req, res) => {
     let recipeDetail = {
       image: recipeApi.data.image,
       name: recipeApi.data.title,
-      dishTypes: recipeApi.data.dishTypes,
-      diet: recipeApi.data.diet,
+      diets: recipeApi.data.diets,
       summary: recipeApi.data.summary,
       score: recipeApi.data.score,
       healthScore: recipeApi.data.healthScore,

@@ -17,6 +17,18 @@
     background-color: rgba(6, 4, 3, 0.633);
 }
 
+.detail__content-diet {
+    text-transform: capitalize;
+    width: fit-content;
+    margin: 0 auto;
+    padding: .3rem;
+    text-shadow: var(--text-shadow);
+    box-shadow: var(--box-shadow);
+    border-radius: 10px;
+    background-color: var(--color-bg);
+    color: var(--color-white);
+}
+
 .detail__content-link {
     display: block;
     margin: 0 auto;

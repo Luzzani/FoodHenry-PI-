@@ -1,5 +1,6 @@
-import "./Home.css";
 import { useSelector } from "react-redux";
+
+import "./Home.css"; 
 
 function Paginated({ recipesPerPage, allRecipes, paginatedHandler }) {
   const prevPage = useSelector((state) => {

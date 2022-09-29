@@ -5,7 +5,7 @@ const router = Router();
 
 router.post("/", async (req, res) => {
   const { name, summary, healthScore, steps, image, dietTypes } = req.body;
-  if ((!name || !summary || !healthScore || !steps || !dietTypes))
+  if (!name || !summary || !healthScore || !steps || !dietTypes)
     return res.status(400).send("Missing data");
 
   const newRecipe = await Recipe.create({
@@ -21,10 +21,9 @@ router.post("/", async (req, res) => {
       name: dietTypes,
     },
   });
-  
+
   newRecipe.addDiet(getDiet);
   return res.status(200).send(newRecipe);
-
 });
 
 module.exports = router;

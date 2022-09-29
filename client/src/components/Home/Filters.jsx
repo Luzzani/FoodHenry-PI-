@@ -5,10 +5,12 @@ import {
   filterScore,
   setPageNumPrev,
 } from "../../redux/actions";
-import SearchBar from "./SearchBar";
-import "./Home.css";
-import SelectFilter from "./SelectFilter";
 import { useAuth0 } from "@auth0/auth0-react";
+
+import "./Home.css";
+
+import SearchBar from "./SearchBar";
+import SelectFilter from "./SelectFilter";
 
 function Filters(props) {
   const { isAuthenticated } = useAuth0();
@@ -25,7 +27,7 @@ function Filters(props) {
 
   const filterAlphabeticalHandler = () => {
     dispatch(filterAlphabetically(alphabetical));
-    // setCurrentPage(1);
+    setCurrentPage(1);
     dispatch(setPageNumPrev(1));
     setAlphabetical((prevState) => !prevState);
   };
@@ -33,7 +35,7 @@ function Filters(props) {
   const filterHealthScore = () => {
     dispatch(filterScore(healthScore));
     dispatch(setPageNumPrev(1));
-    // setCurrentPage(1);
+    setCurrentPage(1);
     setHealthScore((prevState) => !prevState);
   };
 
@@ -41,8 +43,9 @@ function Filters(props) {
     <div className="filter__contianer">
       {isAuthenticated ? (
         <Link to={"/createRecipe"}>
-
-          <button className="filter__button card__hover-effect">Create Recipe</button>
+          <button className="filter__button card__hover-effect">
+            Create Recipe
+          </button>
         </Link>
       ) : (
         <></>
@@ -53,7 +56,6 @@ function Filters(props) {
         <div>
           {alphabetical ? (
             <button
-
               className="filter__button card__hover-effect"
               onClick={filterAlphabeticalHandler}
             >
@@ -61,7 +63,6 @@ function Filters(props) {
             </button>
           ) : (
             <button
-
               className="filter__button card__hover-effect"
               onClick={filterAlphabeticalHandler}
             >
@@ -71,13 +72,17 @@ function Filters(props) {
         </div>
         <div>
           {healthScore ? (
-
-            <button className="filter__button card__hover-effect" onClick={filterHealthScore}>
+            <button
+              className="filter__button card__hover-effect"
+              onClick={filterHealthScore}
+            >
               Highest health score
             </button>
           ) : (
-
-            <button className="filter__button card__hover-effect" onClick={filterHealthScore}>
+            <button
+              className="filter__button card__hover-effect"
+              onClick={filterHealthScore}
+            >
               Lowest health score
             </button>
           )}

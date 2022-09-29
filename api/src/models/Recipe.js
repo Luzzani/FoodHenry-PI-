@@ -32,9 +32,9 @@ module.exports = (sequelize) => {
         type: DataTypes.ARRAY(DataTypes.JSONB),
       },
       image: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         defaultValue:
-          "https://img.freepik.com/foto-gratis/tabla-cortar-madera-rodeada-platos-pasta-e-ingredientes-mesa_23-2148246798.jpg?w=996&t=st=1663015250~exp=1663015850~hmac=d98270e7af7ce1a30a0c9b7993beb38c974b9982d5fa1eabdd605671d1b11da0",
+          "https://st3.depositphotos.com/5984660/12584/v/600/depositphotos_125843360-stock-illustration-chef-preparing-soup-and-reading.jpg",
       },
     },
     {

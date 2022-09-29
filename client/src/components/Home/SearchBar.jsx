@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import "./Home.css";
 import { getRecipeByName, setPageNumPrev } from "../../redux/actions";
+
+import "./Home.css";
 
 function SearchBar({ setCurrentPage }) {
   const dispatch = useDispatch();

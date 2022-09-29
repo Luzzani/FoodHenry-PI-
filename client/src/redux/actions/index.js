@@ -101,6 +101,10 @@ export function getDetail(id) {
       });
     } catch (error) {
       console.log(error);
+      return dispatch({
+        type: GET_RECIPE_DETAIL,
+        payload: { name: "Recipe not found" },
+      });
     }
   };
 }
