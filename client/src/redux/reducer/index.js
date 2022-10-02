@@ -60,7 +60,7 @@ function rootReducer(state = initialState, action) {
       };
 
     case ORDER_RECIPE:
-      const filteredRecipes = state.allRecipes.sort((a, b) => {
+      const filteredRecipes = state.recipes.sort((a, b) => {
         if (action.payload) {
           if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
           if (b.name.toLowerCase() < a.name.toLowerCase()) return 1;

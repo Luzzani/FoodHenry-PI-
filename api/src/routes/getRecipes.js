@@ -8,9 +8,10 @@ const {
 const router = Router();
 
 router.get("/", async (req, res) => {
+
   const { name } = req.query;
   let allInfo = await getAllInfo();
-
+  
   if (name) {
     try {
       let filteredRecipe = await allInfo.filter((e) =>

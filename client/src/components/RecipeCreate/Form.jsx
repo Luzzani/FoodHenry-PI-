@@ -31,7 +31,7 @@ function Form() {
     healthScore: 0,
     dietTypes: [],
   });
-
+console.log({newRecipe});
   useEffect(() => {
     dispatch(getDiets());
 

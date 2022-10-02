@@ -1,13 +1,13 @@
 const axios = require("axios");
 const { Recipe, Diet } = require("../db");
-const { API_KEY3 } = process.env;
+const { API_KEY7 } = process.env;
 
 //
 
 const getInfoApi = async () => {
   const apiInfo = await axios.get(
-    //`https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`
-    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY3}&number=100&addRecipeInformation=true`
+    `https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`
+    //`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY7}&number=100&addRecipeInformation=true`
   );
   const apiData = await apiInfo.data.results.map((e) => {
     return {
@@ -40,7 +40,7 @@ const getInfoDB = async () => {
 
 const getApiInfoById = async (id) => {
   return await axios.get(
-    `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY3}`
+    `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY7}`
   );
 };
 
@@ -60,9 +60,10 @@ const getAllInfo = async () => {
   const apiInfo = await getInfoApi();
   const dbInfo = await getInfoDB();
   const allInfo = apiInfo.concat(dbInfo);
-
+  
   return allInfo;
 };
+
 
 module.exports = {
   getAllInfo,
@@ -71,3 +72,37 @@ module.exports = {
   getInfoDB,
   getInfoApi,
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const getByName = async (name) => {
+//   return await axios.get(
+//     `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY7}&query=${name}`
+//   );
+// };
+
+// const getByNameDB = async (name) => {
+//   return await Recipe.findAll({
+//     where: { name },
+//     include: {
+//       model: Diet,
+//       attributes: ["name"],
+//     },
+//   });
+// };

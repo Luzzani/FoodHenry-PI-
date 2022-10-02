@@ -29,8 +29,6 @@ function RecipeDetail(props) {
     };
   }, [dispatch, id]);
 
-  console.log({ recipe });
-
   const deleteHandle = (id) => {
     dispatch(deleteRecipe(id));
     dispatch(setPageNumPrev(1));
