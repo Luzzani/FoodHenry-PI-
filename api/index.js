@@ -19,10 +19,11 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require("./src/app.js");
 const { conn, Diet } = require("./src/db.js");
+const { PORT } = process.env;
 
 const dietsDb = [
   "dairy free",
-  "gluten free", 
+  "gluten free",
   "ketogenic",
   "lacto ovo vegetarian",
   "fodmap friendly",
@@ -36,8 +37,8 @@ const dietsDb = [
 conn
   .sync({ force: false })
   .then(() => {
-    server.listen(process.env.PORT, () => {
-      console.log("%s listening at 3001"); // eslint-disable-line no-console
+    server.listen(PORT, () => {
+      console.log(`%s listening at ${PORT}`); // eslint-disable-line no-console
     });
   })
   .then(() => {
