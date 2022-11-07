@@ -1,3 +1,17 @@
+# PROYECTO INDIVIDUAL - RECETAS
+
+Demo >https://recipes-and-recipes.vercel.app/
+
+En esta web podras ver diferentes recetas, usar los filtros para encontrar una en particular y registrarte para poder crear y subir las propias, si te arrepientes de alguna podras eliminarla.
+
+ ![recipe2](https://user-images.githubusercontent.com/90403563/200429907-d55be4dd-f677-4cb7-9e54-161807a0338e.jpg)
+
+
+
+
+![recipes](https://user-images.githubusercontent.com/90403563/200429910-b1046cc1-c526-442d-aeae-c09461786f05.jpg)
+
+
 ![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
 
 # Individual Project - Henry Food
